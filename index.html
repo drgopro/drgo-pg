@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#f8f7f4;--card:#ffffff;--text:#2c2c2a;--sub:#73726c;--hint:#9c9a92;--border:#e2e0d8;--blue:#378ADD;--blue-bg:#E6F1FB;--blue-dark:#0C447C;--teal:#1D9E75;--teal-bg:#E1F5EE;--teal-dark:#085041;--purple:#534AB7;--purple-bg:#EEEDFE;--purple-dark:#3C3489;--coral:#D85A30;--coral-bg:#FAECE7;--coral-dark:#712B13;--amber:#BA7517;--amber-bg:#FAEEDA;--amber-dark:#633806;--gray-bg:#F1EFE8;--green:#639922;--green-bg:#EAF3DE;--green-dark:#27500A;--pink:#D4537E;--pink-bg:#FBEAF0;--pink-dark:#72243E;--red:#E24B4A;--red-bg:#FCEBEB;--red-dark:#791F1F}
+:root{--bg:#f8f7f4;--card:#ffffff;--text:#2c2c2a;--sub:#73726c;--hint:#9c9a92;--border:#e2e0d8;--blue:#378ADD;--blue-bg:#E6F1FB;--blue-dark:#0C447C;--teal:#1D9E75;--teal-bg:#E1F5EE;--teal-dark:#085041;--purple:#534AB7;--purple-bg:#EEEDFE;--purple-dark:#3C3489;--coral:#D85A30;--coral-bg:#FAECE7;--coral-dark:#712B13;--amber:#BA7517;--amber-bg:#FAEEDA;--amber-dark:#633806;--gray-bg:#F1EFE8;--green:#639922;--green-bg:#EAF3DE;--green-dark:#27500A}
 body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:0 0 80px;letter-spacing:-0.2px;font-weight:400}
 .hero{background:linear-gradient(135deg,#26215C 0%,#534AB7 50%,#378ADD 100%);color:#fff;padding:60px 24px 48px;text-align:center}
 .hero h1{font-size:28px;font-weight:700;margin-bottom:8px;letter-spacing:-0.5px}
@@ -19,7 +19,7 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
 .section-title{font-size:20px;font-weight:700;margin:48px 0 6px;letter-spacing:-0.3px}
 .section-desc{font-size:14px;color:var(--sub);margin-bottom:20px}
 
-.arch-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:20px 0}
+.arch-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
 @media(max-width:600px){.arch-grid{grid-template-columns:1fr}}
 .arch-card{background:var(--card);border-radius:14px;padding:18px;border:1px solid var(--border)}
 .arch-card h3{font-size:14px;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:6px}
@@ -32,8 +32,6 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
 .process-step{flex:1;min-width:85px;text-align:center;position:relative;padding:12px 6px 8px}
 .process-step .arrow-box{padding:10px 8px;border-radius:8px;font-size:12px;font-weight:600;color:#fff;position:relative}
 .process-step .sub{font-size:11px;color:var(--hint);margin-top:6px}
-.process-step::after{content:'';position:absolute;right:-6px;top:18px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;z-index:1}
-.process-step:last-child::after{display:none}
 
 .perm-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;background:var(--card);border-radius:12px;overflow:hidden;border:1px solid var(--border)}
 .perm-table th,.perm-table td{padding:10px 12px;text-align:center;border-bottom:1px solid var(--border)}
@@ -41,7 +39,7 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
 .perm-table td:first-child{text-align:left;font-weight:500;font-size:13px}
 .perm-table tr:last-child td{border-bottom:none}
 .check{color:var(--teal);font-weight:700}
-.cross{color:var(--red);font-weight:700}
+.cross{color:#E24B4A;font-weight:700}
 .partial{color:var(--amber);font-size:11px;font-weight:500}
 
 .screen-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
@@ -51,13 +49,14 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
 .screen-item h4{font-size:14px;font-weight:600;margin-bottom:4px}
 .screen-item p{font-size:12px;color:var(--sub);line-height:1.6}
 
-.auto-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:20px 0}
-@media(max-width:600px){.auto-cards{grid-template-columns:1fr}}
-.auto-card{border-radius:12px;padding:16px;border:1px solid var(--border);background:var(--card)}
-.auto-card h4{font-size:13px;font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:6px}
-.auto-card p{font-size:12px;color:var(--sub);line-height:1.6}
-.auto-card .flow{display:flex;flex-direction:column;gap:4px;margin-top:8px;font-size:11px;color:var(--sub)}
-.auto-card .flow span{background:var(--gray-bg);padding:4px 8px;border-radius:6px;text-align:center}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:20px 0}
+@media(max-width:600px){.feat-grid{grid-template-columns:1fr}}
+.feat-card{background:var(--card);border-radius:14px;padding:18px;border:1px solid var(--border)}
+.feat-card .icon{font-size:22px;margin-bottom:8px}
+.feat-card h4{font-size:14px;font-weight:600;margin-bottom:6px}
+.feat-card p{font-size:12px;color:var(--sub);line-height:1.6}
+.feat-card .tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px}
+.feat-card .tags span{font-size:10px;padding:3px 8px;border-radius:5px;font-weight:500}
 
 .dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
 @media(max-width:560px){.dash-grid{grid-template-columns:1fr}}
@@ -70,12 +69,15 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
 .login-info h3{font-size:15px;font-weight:600;margin-bottom:10px}
 .login-steps{display:flex;flex-direction:column;gap:8px}
 .login-step{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--sub)}
-.login-step .icon{width:28px;height:28px;border-radius:7px;background:var(--blue-bg);color:var(--blue-dark);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.login-step .licon{width:28px;height:28px;border-radius:7px;background:var(--blue-bg);color:var(--blue-dark);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
 .login-step strong{color:var(--text)}
 
-.future{background:var(--gray-bg);border:1px dashed var(--border);border-radius:14px;padding:18px 22px;margin:20px 0}
-.future h3{font-size:14px;font-weight:600;margin-bottom:4px;color:var(--sub)}
-.future p{font-size:13px;color:var(--hint)}
+.future-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+@media(max-width:560px){.future-grid{grid-template-columns:1fr}}
+.future-card{background:var(--gray-bg);border:1px dashed var(--border);border-radius:12px;padding:16px 18px}
+.future-card h4{font-size:13px;font-weight:600;color:var(--sub);margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.future-card p{font-size:12px;color:var(--hint);line-height:1.6}
+.future-badge{font-size:10px;background:var(--purple-bg);color:var(--purple-dark);padding:2px 8px;border-radius:4px;font-weight:600}
 
 .next-steps{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 24px;margin:20px 0}
 .next-steps h3{font-size:15px;font-weight:600;margin-bottom:12px}
@@ -116,7 +118,7 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
 
   <!-- 시스템 아키텍처 -->
   <div class="section-title">시스템 아키텍처</div>
-  <div class="section-desc">CRM 백오피스 코어를 중심으로 3개 핵심 모듈과 외부 API가 연결됩니다.</div>
+  <div class="section-desc">CRM 백오피스 코어를 중심으로 핵심 모듈들이 연결됩니다.</div>
 
   <div class="arch-grid">
     <div class="arch-card">
@@ -135,14 +137,22 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
         <li>작업 항목별 소요 시간 및 견적 자동 계산</li>
       </ul>
     </div>
-  <!--  <div class="arch-card">
-      <h3><span class="dot" style="background:var(--teal)"></span>외부 연동 [API]</h3>
+    <div class="arch-card">
+      <h3><span class="dot" style="background:var(--green)"></span>재고/ERP 관리</h3>
       <ul>
-        <li>구글 캘린더 양방향 일정 동기화</li>
-        <li>카카오 알림톡 48시간 전 리마인드</li>
-        <li>개인 계정 기반 로그인 및 권한 관리</li>
+        <li>장비·부품 재고 실시간 파악</li>
+        <li>입출고 내역 및 재고 이동 추적</li>
+        <li>발주·구매·비용 관리 ERP 기능</li>
       </ul>
-    </div>-->
+    </div>
+    <div class="arch-card">
+      <h3><span class="dot" style="background:var(--purple)"></span>알림/커뮤니케이션</h3>
+      <ul>
+        <li>웹 푸시 알림 (일정·재고·상태 변경)</li>
+        <li>채널톡 연동 외부 문의 흡수</li>
+        <li>사내 지식 공유 게시판</li>
+      </ul>
+    </div>
   </div>
 
   <!-- 프로세스 바 라이프사이클 -->
@@ -151,37 +161,71 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
 
   <div class="process-bar">
     <div class="process-step">
-      <div class="arrow-box" style="background:var(--blue)">상담</div>
+      <div class="arrow-box" style="background:#D4A017">상담</div>
       <div class="sub">문의 접수<br>요구파악</div>
     </div>
     <div class="process-step">
-      <div class="arrow-box" style="background:var(--blue-dark)">장비파악</div>
+      <div class="arrow-box" style="background:#B5A61D">장비파악</div>
       <div class="sub">현장 환경<br>분석</div>
     </div>
     <div class="process-step">
-      <div class="arrow-box" style="background:var(--coral)">일정제안</div>
+      <div class="arrow-box" style="background:#82A623">일정제안</div>
       <div class="sub">방문일<br>조율</div>
     </div>
     <div class="process-step">
-      <div class="arrow-box" style="background:var(--amber)">견적/계약</div>
+      <div class="arrow-box" style="background:#4E9E3A">견적/계약</div>
       <div class="sub">자동 계산<br>견적서</div>
     </div>
     <div class="process-step">
-      <div class="arrow-box" style="background:var(--amber-dark)">결제/예약</div>
-      <div class="sub">결제 처리<br>캘린더 등록</div>
+      <div class="arrow-box" style="background:#2E8E5A">결제/예약</div>
+      <div class="sub">결제 처리<br>일정 확정</div>
     </div>
     <div class="process-step">
-      <div class="arrow-box" style="background:var(--teal)">방문</div>
+      <div class="arrow-box" style="background:#1D7E80">방문</div>
       <div class="sub">현장 세팅<br>보고서</div>
     </div>
     <div class="process-step">
-      <div class="arrow-box" style="background:var(--green)">AS</div>
+      <div class="arrow-box" style="background:#2A6BAD">AS</div>
       <div class="sub">14일 후<br>자동 만료</div>
     </div>
   </div>
 
   <div style="background:var(--blue-bg);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--blue-dark);margin:8px 0 0">
     <strong>핵심 UX:</strong> 프로세스 바의 특정 단계 클릭 시, 아코디언(Slide-down) 방식으로 해당 단계의 상세 이력이 즉시 전개됩니다. 페이지 이동 없이 전체 히스토리를 원스크롤로 파악합니다.
+  </div>
+
+  <!-- 핵심 기능 모듈 -->
+  <div class="section-title">핵심 기능 모듈</div>
+  <div class="section-desc">CRM 운영의 핵심이 되는 기능들입니다.</div>
+
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="icon">🔔</div>
+      <h4>웹 알림 발송</h4>
+      <p>일정 리마인드, 재고 부족, 상태 변경 등 주요 이벤트를 웹 푸시 알림으로 실시간 전달합니다.</p>
+      <div class="tags">
+        <span style="background:var(--purple-bg);color:var(--purple-dark)">채널톡 연동</span>
+        <span style="background:var(--purple-bg);color:var(--purple-dark)">웹푸시</span>
+      </div>
+    </div>
+    <div class="feat-card">
+      <div class="icon">📦</div>
+      <h4>재고 파악</h4>
+      <p>방송 장비, 부품, 소모품의 재고를 실시간으로 확인하고 입출고 이력을 체계적으로 관리합니다.</p>
+      <div class="tags">
+        <span style="background:var(--coral-bg);color:var(--coral-dark)">실시간 재고</span>
+        <span style="background:var(--coral-bg);color:var(--coral-dark)">입출고</span>
+      </div>
+    </div>
+    <div class="feat-card">
+      <div class="icon">📊</div>
+      <h4>ERP 기능</h4>
+      <p>발주 관리, 구매 내역, 비용 정산, 매출/지출 추적까지. 사내 자원 관리를 하나의 시스템에서 통합합니다.</p>
+      <div class="tags">
+        <span style="background:var(--green-bg);color:var(--green-dark)">발주관리</span>
+        <span style="background:var(--green-bg);color:var(--green-dark)">비용정산</span>
+      </div>
+    </div>
   </div>
 
   <!-- 사용자 권한 -->
@@ -203,6 +247,7 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
       <tr><td>모든 이력 등록/수정/삭제</td><td class="check">✔</td><td class="check">✔</td><td class="partial">⚠ 일부 제한</td><td class="cross">✘</td></tr>
       <tr><td>캘린더 열람</td><td class="check">✔</td><td class="check">✔</td><td class="check">✔</td><td class="check">✔</td></tr>
       <tr><td>방문 보고서 작성</td><td class="check">✔</td><td class="check">✔</td><td class="cross">✘</td><td class="check">✔</td></tr>
+      <tr><td>재고/ERP 관리</td><td class="check">✔</td><td class="check">✔</td><td class="partial">⚠ 조회만</td><td class="cross">✘</td></tr>
     </tbody>
   </table>
   <div style="font-size:11px;color:var(--hint);margin-top:4px">* 소유자 권한은 시스템 최초 가입 1인에게 귀속되며, 이후 추가 부여가 불가합니다.</div>
@@ -267,60 +312,30 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
   </div>
 
   <div class="acc-header" id="acc-screen6" onclick="toggleAcc('acc-screen6')">
-    <span>💳 [7] 결제 내역 및 캘린더 예약 동기화</span><span class="arrow">▼</span>
+    <span>💳 [6] 결제 내역 및 견적 연동</span><span class="arrow">▼</span>
   </div>
   <div class="acc-body" id="acc-screen6-body">
     <div class="screen-list">
       <div class="screen-item"><div class="num tag" style="background:var(--blue-bg);color:var(--blue-dark)">견적</div><h4>이전 견적 연동 시스템</h4><p>상담 단계에서 저장된 견적서를 원클릭으로 불러와 결제 폼에 자동 입력.</p></div>
-      <div class="screen-item"><div class="num tag" style="background:var(--purple-bg);color:var(--purple-dark)">분리</div><h4>자산 및 서비스 명세 분리 UI</h4><p>물리적 자산 [제품]과 무형의 [서비스]를 좌우/상하로 명확히 분리 표기하여 투명한 최종 결제 금액 산출.</p></div>
-      <div class="screen-item" style="grid-column:1/-1"><div class="num tag" style="background:var(--teal-bg);color:var(--teal-dark)">캘린더</div><h4>구글 캘린더 예약 동기화 엔진</h4><p>방문 기술자 할당 + 예약 날짜/시간 지정 완료 시 → DB 등록과 동시에 구글 캘린더 API를 백그라운드로 호출하여 사내 공용 캘린더에 즉시 일정 자동 생성.</p></div>
+      <div class="screen-item"><div class="num tag" style="background:var(--purple-bg);color:var(--purple-dark)">분리</div><h4>자산 및 서비스 명세 분리 UI</h4><p>물리적 자산 [제품](예: i7-13700K, 메인보드 등)과 무형의 [서비스](예: 컴퓨터 세팅, 조립비)를 좌우/상하로 명확히 분리 표기하여 투명한 최종 결제 금액 산출.</p></div>
     </div>
   </div>
 
-  <!-- 시스템 자동화 -->
-  <div class="section-title">시스템 자동화 및 외부 API</div>
-  <div class="section-desc">사람의 개입 없이 자동으로 처리되는 3가지 핵심 프로세스입니다.</div>
-
-  <div class="auto-cards">
- <!--   <div class="auto-card">
-      <h4 style="color:var(--amber-dark)">💬 카카오 알림톡 리마인드</h4>
-      <div class="flow">
-        <span>예약 확정 DB 저장</span>
-        <span>↓</span>
-        <span>48시간 전 타이머 도래</span>
-        <span>↓</span>
-        <span>스케줄러 자동 인식</span>
-        <span>↓</span>
-        <span>의뢰인에게 알림톡 발송</span>
-      </div>
-    </div>-->
-    <div class="auto-card">
-      <h4 style="color:var(--blue-dark)">📅 캘린더 태깅 룰</h4>
-      <div class="flow">
-        <span>'임시/제안' 체크 활성화</span>
-        <span>↓</span>
-        <span>구글 캘린더 API 전송</span>
-        <span>↓</span>
-        <span>일정 제목에 [임시] 또는 [제안] 태그 강제 접두사 생성</span>
-      </div>
-    </div>
-    <div class="auto-card">
-      <h4 style="color:var(--green-dark)">🔄 AS 만료 자동 처리</h4>
-      <div class="flow">
-        <span>상태값: 방문 완료</span>
-        <span>↓</span>
-        <span>14일(2주) 타이머 작동</span>
-        <span>↓</span>
-        <span>연장 이력 조회 (특이사항 없음)</span>
-        <span>↓</span>
-        <span>프로젝트 의뢰 강제 종료</span>
-      </div>
+  <div class="acc-header" id="acc-screen7" onclick="toggleAcc('acc-screen7')">
+    <span>📦 [7] 재고 관리 및 ERP</span><span class="arrow">▼</span>
+  </div>
+  <div class="acc-body" id="acc-screen7-body">
+    <div class="screen-list">
+      <div class="screen-item"><div class="num tag" style="background:var(--green-bg);color:var(--green-dark)">재고</div><h4>실시간 재고 현황</h4><p>장비·부품·소모품별 현재 수량 확인, 안전 재고 미달 시 웹 푸시 알림으로 자동 통지.</p></div>
+      <div class="screen-item"><div class="num tag" style="background:var(--teal-bg);color:var(--teal-dark)">입출고</div><h4>입출고 이력 관리</h4><p>입고·출고·조정·반품 유형별 수량 변동 기록. 주문과 자동 연동하여 출고 시 재고 자동 차감.</p></div>
+      <div class="screen-item"><div class="num tag" style="background:var(--amber-bg);color:var(--amber-dark)">발주</div><h4>발주 및 구매 관리</h4><p>부족 재고 발주 요청, 구매처 관리, 발주 상태(요청→승인→발주→입고) 단계별 추적.</p></div>
+      <div class="screen-item"><div class="num tag" style="background:var(--coral-bg);color:var(--coral-dark)">정산</div><h4>비용 정산 및 매출 추적</h4><p>프로젝트별 매출/지출 내역 자동 집계, 월별·분기별 리포트 생성으로 경영 데이터 시각화.</p></div>
     </div>
   </div>
 
   <!-- 대시보드 -->
   <div class="section-title">대시보드 위젯</div>
-  <div class="section-desc">로그인 후 메인 화면에서 바로 확인할 수 있는 4가지 핵심 위젯입니다.</div>
+  <div class="section-desc">로그인 후 메인 화면에서 바로 확인할 수 있는 핵심 위젯입니다.</div>
 
   <div class="dash-grid">
     <div class="dash-item">
@@ -331,17 +346,17 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
     <div class="dash-item">
       <div class="dash-icon">📝</div>
       <h4>지식 공유 게시판</h4>
-      <p>공지사항, 회의록, 최근 이슈, 기술 정보 아카이빙. 상담사 이상 권한 전용 작성/조회. 클릭 시 상세 페이지 이동.</p>
+      <p>공지사항, 회의록, 최근 이슈, 기술 정보 아카이빙. 상담사 이상 권한 전용 작성/조회.</p>
     </div>
     <div class="dash-item">
       <div class="dash-icon">🌐</div>
       <h4>외부 VOC 연동 뷰</h4>
-      <p>회사 홈페이지 QNA 게시판 최신 글을 대시보드 내에 연동. 작성자 닉네임, 등록 날짜, 제목 리스트화.</p>
+      <p>회사 홈페이지 QNA 게시판 최신 글을 대시보드 내에 연동. 채널톡 문의도 통합 리스트화.</p>
     </div>
     <div class="dash-item">
-      <div class="dash-icon">💬</div>
-      <h4>아웃바운드 요약 데이터</h4>
-      <p>외부 채팅 솔루션 연동. 아웃바운드 텍스트 내용을 제목 위주로 리스트화하여 CRM 이력으로 흡수 및 추적.</p>
+      <div class="dash-icon">📊</div>
+      <h4>재고/매출 요약 카드</h4>
+      <p>재고 부족 항목 알림, 이번 달 매출/지출 요약, 진행중 프로젝트 수 등 핵심 지표를 한눈에 표시.</p>
     </div>
   </div>
 
@@ -351,15 +366,15 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
     <h3>🔐 개인 계정 로그인</h3>
     <div class="login-steps">
       <div class="login-step">
-        <div class="icon">1</div>
+        <div class="licon">1</div>
         <div><strong>계정 발급</strong> — 관리자(소유자)가 각 사원에게 아이디와 임시 비밀번호를 발급합니다.</div>
       </div>
       <div class="login-step">
-        <div class="icon">2</div>
+        <div class="licon">2</div>
         <div><strong>첫 로그인</strong> — 발급받은 계정으로 로그인 후 비밀번호를 변경합니다.</div>
       </div>
       <div class="login-step">
-        <div class="icon">3</div>
+        <div class="licon">3</div>
         <div><strong>역할 배정</strong> — 소유자·관리자·상담사·외부(기술자) 4단계 역할이 자동 부여됩니다.</div>
       </div>
     </div>
@@ -371,19 +386,31 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
     직관적인 UI를 통해 '상담 및 세팅 작업 시간을 극적으로 단축'하고, 흩어진 정보를 하나의 프로젝트로 묶어 '투명한 작업 이력 트래킹'을 달성하는 것에 있습니다.
   </div>
 
+  <!-- 추후 기능 -->
+  <div class="section-title">추후 추가 예정 기능</div>
+  <div class="section-desc">아래 기능들은 순차적으로 개발·적용될 예정입니다.</div>
+
+  <div class="future-grid">
+    <div class="future-card">
+      <h4>🤖 AI 상담 요약 자동 기입 <span class="future-badge">추후</span></h4>
+      <p>상담 내용을 AI가 자동으로 분석·요약하여 이력 폼에 자동 기입. 상담사의 수기 입력 부담을 대폭 줄이고 일관된 기록 품질을 확보합니다.</p>
+    </div>
+    <div class="future-card">
+      <h4>🏠 회사 홈페이지 연동 <span class="future-badge">추후</span></h4>
+      <p>온라인 견적서 시스템, 고객 포털(견적 확인/승인) 기능을 홈페이지와 통합하여 외부 고객도 직접 이용 가능하도록 확장합니다.</p>
+    </div>
+  </div>
+
   <!-- Next Steps -->
   <div class="next-steps">
     <h3>Next Steps</h3>
     <ul>
-      <li>디자인 세부 UI 고도화 논의 시작</li>
+      <li>개발사 및 디자인팀 협의체 구성 및 세부 UI 고도화 논의 시작</li>
+      <li>로그인 및 권한 시스템 보안 범위 확정 (개발팀)</li>
+      <li>재고/ERP 모듈 데이터 구조 설계 및 기존 엑셀 데이터 마이그레이션 계획</li>
+      <li>웹 푸시 알림 및 채널톡 연동 기술 검토</li>
       <li>공간 맵핑 화면 내 Drag &amp; Drop 기능 구현 난이도 타진 및 라이브러리 검토</li>
     </ul>
-  </div>
-
-  <!-- 향후 확장 -->
-  <div class="future">
-    <h3>🔮 향후 확장 예정</h3>
-    <p>회사 홈페이지 연동 · 온라인 견적서 시스템 · 고객 포털(견적 확인/승인) 기능이 단계적으로 추가될 예정입니다.</p>
   </div>
 
   <div class="footer">
