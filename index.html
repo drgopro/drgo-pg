@@ -411,6 +411,65 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
     </div>
   </div>
 
+  <div class="acc-header" id="acc-pwa-limit" onclick="toggleAcc('acc-pwa-limit')">
+    <span>⚠️ PWA 제약사항 및 대응 방안</span><span class="arrow">▼</span>
+  </div>
+  <div class="acc-body" id="acc-pwa-limit-body">
+    <div style="font-size:13px;color:var(--sub);line-height:1.8;margin-bottom:14px">
+      PWA는 네이티브 앱을 대체할 수 있는 강력한 전략이지만, 특히 <strong style="color:var(--text)">iOS 환경에서 일부 제약</strong>이 존재합니다.<br>
+      아래 항목을 사전에 인지하고 대응 방안을 마련해야 합니다.
+    </div>
+    <table class="perm-table">
+      <thead>
+        <tr>
+          <th style="text-align:left">항목</th>
+          <th style="text-align:left">제약사항</th>
+          <th style="text-align:left">대응 방안</th>
+          <th>심각도</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:600">웹 푸시 알림<br>(iOS)</td>
+          <td style="text-align:left;font-size:12px;color:var(--sub)">iOS 16.4 이상에서만 지원. 반드시 홈 화면에 PWA로 추가한 상태에서만 동작. 일반 사파리에서는 푸시 수신 불가.</td>
+          <td style="text-align:left;font-size:12px;color:var(--sub)">채널톡 인앱 알림 또는 SMS 알림을 병행하는 이중 알림 구조 적용. 사원 온보딩 시 PWA 홈 화면 추가를 필수로 안내.</td>
+          <td><span style="background:var(--coral-bg);color:var(--coral-dark);font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600">높음</span></td>
+        </tr>
+        <tr>
+          <td style="font-weight:600">백그라운드<br>동작 (iOS)</td>
+          <td style="text-align:left;font-size:12px;color:var(--sub)">앱을 완전히 닫으면 서비스 워커가 종료될 수 있어, 실시간 알림 수신이 불안정. 안드로이드는 안정적.</td>
+          <td style="text-align:left;font-size:12px;color:var(--sub)">중요 알림(결제 완료, 일정 변경 등)은 서버 측 SMS/채널톡 발송으로 이중 보장. 푸시는 보조 수단으로 활용.</td>
+          <td><span style="background:var(--amber-bg);color:var(--amber-dark);font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600">중간</span></td>
+        </tr>
+        <tr>
+          <td style="font-weight:600">저장 공간<br>제한 (iOS)</td>
+          <td style="text-align:left;font-size:12px;color:var(--sub)">출처당 약 50MB 제한. 약 2주간 미사용 시 캐시 데이터 자동 삭제 가능.</td>
+          <td style="text-align:left;font-size:12px;color:var(--sub)">오프라인 캐싱은 최소한으로 설계. 핵심 데이터는 항상 서버 기준 운영, 캐시는 UI 셸(화면 틀)만 저장.</td>
+          <td><span style="background:var(--amber-bg);color:var(--amber-dark);font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600">중간</span></td>
+        </tr>
+        <tr>
+          <td style="font-weight:600">Drag &amp; Drop<br>(터치 기기)</td>
+          <td style="text-align:left;font-size:12px;color:var(--sub)">공간 맵핑의 Drag &amp; Drop이 터치 기기에서 기본 드래그 이벤트와 다르게 동작.</td>
+          <td style="text-align:left;font-size:12px;color:var(--sub)">터치 대응 라이브러리(SortableJS 등) 별도 적용. 모바일에서는 간소화된 리스트 UI로 대체 가능하도록 반응형 분기.</td>
+          <td><span style="background:var(--blue-bg);color:var(--blue-dark);font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600">낮음</span></td>
+        </tr>
+        <tr>
+          <td style="font-weight:600">카메라/파일<br>업로드</td>
+          <td style="text-align:left;font-size:12px;color:var(--sub)" colspan="2">iOS · Android PWA 모두 정상 지원. 방문 사진 촬영, 증빙 서류 업로드 문제없음.</td>
+          <td><span style="background:var(--green-bg);color:var(--green-dark);font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600">문제없음</span></td>
+        </tr>
+        <tr>
+          <td style="font-weight:600">페이앱<br>결제 연동</td>
+          <td style="text-align:left;font-size:12px;color:var(--sub)" colspan="2">결제 링크 기반이므로 PWA/일반 웹 무관하게 동일 동작. 제약 없음.</td>
+          <td><span style="background:var(--green-bg);color:var(--green-dark);font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600">문제없음</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="background:var(--blue-bg);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--blue-dark);margin-top:12px">
+      <strong>결론:</strong> 치명적 문제는 없으며, 웹 푸시 알림의 iOS 제약이 가장 큰 변수입니다. 채널톡/SMS 이중 알림 구조를 기본 설계에 포함하면 안정적으로 운영할 수 있습니다. 사원 온보딩 시 <strong>"홈 화면에 추가"</strong>를 필수 절차로 안내하는 것이 핵심입니다.
+    </div>
+  </div>
+
   <div class="acc-header" id="acc-payapp" onclick="toggleAcc('acc-payapp')">
     <span>💳 페이앱(PayApp) 결제 연동</span><span class="arrow">▼</span>
   </div>
