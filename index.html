@@ -230,27 +230,32 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
 
   <!-- 사용자 권한 -->
   <div class="section-title">사용자 권한 및 접근 제어</div>
-  <div class="section-desc">4단계 역할 기반 권한으로 보안과 업무 효율을 동시에 확보합니다.</div>
+  <div class="section-desc">5단계 역할 기반 권한으로 보안과 업무 효율을 동시에 확보합니다.</div>
 
   <table class="perm-table">
     <thead>
       <tr>
         <th style="text-align:left">기능</th>
-        <th>소유자<br><span style="font-weight:400;font-size:11px">(최고 관리자)</span></th>
+        <th>마스터<br><span style="font-weight:400;font-size:11px">(최고 관리자)</span></th>
         <th>관리자</th>
-        <th>상담사<br><span style="font-weight:400;font-size:11px">(기본)</span></th>
-        <th>외부<br><span style="font-weight:400;font-size:11px">(기술자)</span></th>
+        <th>세일즈</th>
+        <th>멤버</th>
+        <th>프리랜서</th>
       </tr>
     </thead>
     <tbody>
-      <tr><td>가입 승인 및 회원 관리</td><td class="check">✔</td><td class="check">✔</td><td class="cross">✘</td><td class="cross">✘</td></tr>
-      <tr><td>모든 이력 등록/수정/삭제</td><td class="check">✔</td><td class="check">✔</td><td class="partial">⚠ 일부 제한</td><td class="cross">✘</td></tr>
-      <tr><td>캘린더 열람</td><td class="check">✔</td><td class="check">✔</td><td class="check">✔</td><td class="check">✔</td></tr>
-      <tr><td>방문 보고서 작성</td><td class="check">✔</td><td class="check">✔</td><td class="cross">✘</td><td class="check">✔</td></tr>
-      <tr><td>재고/ERP 관리</td><td class="check">✔</td><td class="check">✔</td><td class="partial">⚠ 조회만</td><td class="cross">✘</td></tr>
+      <tr><td>가입 승인 및 회원 관리</td><td class="check">✔</td><td class="cross">✘</td><td class="cross">✘</td><td class="cross">✘</td><td class="cross">✘</td></tr>
+      <tr><td>시스템 설정 관리</td><td class="check">✔</td><td class="cross">✘</td><td class="cross">✘</td><td class="cross">✘</td><td class="cross">✘</td></tr>
+      <tr><td>모든 이력 등록/수정/삭제</td><td class="check">✔</td><td class="check">✔</td><td class="cross">✘</td><td class="cross">✘</td><td class="cross">✘</td></tr>
+      <tr><td>재고 관리 (입출고/수정)</td><td class="check">✔</td><td class="check">✔</td><td class="check">✔</td><td class="cross">✘</td><td class="cross">✘</td></tr>
+      <tr><td>상품 가격 관리</td><td class="check">✔</td><td class="check">✔</td><td class="check">✔</td><td class="cross">✘</td><td class="cross">✘</td></tr>
+      <tr><td>재고/가격 조회</td><td class="check">✔</td><td class="check">✔</td><td class="check">✔</td><td class="check">✔</td><td class="cross">✘</td></tr>
+      <tr><td>일정 등록/수정/삭제</td><td class="check">✔</td><td class="check">✔</td><td class="check">✔</td><td class="check">✔</td><td class="cross">✘</td></tr>
+      <tr><td>캘린더 열람</td><td class="check">✔</td><td class="check">✔</td><td class="check">✔</td><td class="check">✔</td><td class="check">✔</td></tr>
+      <tr><td>방문 보고서 작성</td><td class="check">✔</td><td class="check">✔</td><td class="cross">✘</td><td class="cross">✘</td><td class="check">✔</td></tr>
     </tbody>
   </table>
-  <div style="font-size:11px;color:var(--hint);margin-top:4px">* 소유자 권한은 시스템 최초 가입 1인에게 귀속되며, 이후 추가 부여가 불가합니다.</div>
+  <div style="font-size:11px;color:var(--hint);margin-top:4px">* 마스터 권한은 지정된 최고 관리자에게만 부여되며, 시스템 설정 및 회원 관리를 포함합니다.</div>
 
   <!-- 화면 기능 명세 -->
   <div class="section-title">화면 기능 명세</div>
@@ -375,7 +380,7 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
       </div>
       <div class="login-step">
         <div class="licon">3</div>
-        <div><strong>역할 배정</strong> — 소유자·관리자·상담사·외부(기술자) 4단계 역할이 자동 부여됩니다.</div>
+        <div><strong>역할 배정</strong> — 마스터·관리자·세일즈·멤버·프리랜서 5단계 역할이 부여됩니다.</div>
       </div>
     </div>
   </div>
