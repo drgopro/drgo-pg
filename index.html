@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>닥터고블린컴퍼니 CRM 시스템 안내</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f8f7f4;--card:#ffffff;--text:#2c2c2a;--sub:#73726c;--hint:#9c9a92;--border:#e2e0d8;--blue:#378ADD;--blue-bg:#E6F1FB;--blue-dark:#0C447C;--teal:#1D9E75;--teal-bg:#E1F5EE;--teal-dark:#085041;--purple:#534AB7;--purple-bg:#EEEDFE;--purple-dark:#3C3489;--coral:#D85A30;--coral-bg:#FAECE7;--coral-dark:#712B13;--amber:#BA7517;--amber-bg:#FAEEDA;--amber-dark:#633806;--gray-bg:#F1EFE8;--green:#639922;--green-bg:#EAF3DE;--green-dark:#27500A}
+body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:0 0 80px;letter-spacing:-0.2px;font-weight:400}
+.hero{background:linear-gradient(135deg,#26215C 0%,#534AB7 50%,#378ADD 100%);color:#fff;padding:60px 24px 48px;text-align:center}
+.hero h1{font-size:28px;font-weight:700;margin-bottom:8px;letter-spacing:-0.5px}
+.hero p{font-size:15px;opacity:.85;max-width:480px;margin:0 auto}
+.hero .badge{display:inline-block;background:rgba(255,255,255,.18);padding:6px 16px;border-radius:20px;font-size:13px;margin-bottom:20px;backdrop-filter:blur(4px)}
+.container{max-width:720px;margin:0 auto;padding:0 20px}
+.section-title{font-size:20px;font-weight:700;margin:40px 0 8px;letter-spacing:-0.3px}
+.section-desc{font-size:14px;color:var(--sub);margin-bottom:20px}
+.flow{display:flex;flex-direction:column;gap:0;align-items:center;margin:28px 0}
+.flow-step{width:100%;max-width:480px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 22px;position:relative}
+.flow-step .num{position:absolute;top:-13px;left:20px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff}
+.flow-step h3{font-size:15px;font-weight:600;margin-bottom:2px}
+.flow-step p{font-size:13px;color:var(--sub)}
+.flow-arrow{width:2px;height:28px;background:var(--border);position:relative}
+.flow-arrow::after{content:'';position:absolute;bottom:-4px;left:-4px;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid var(--border)}
+.modules{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+@media(max-width:520px){.modules{grid-template-columns:1fr}}
+.mod{background:var(--card);border-radius:14px;padding:20px;border:1px solid var(--border);cursor:default;transition:box-shadow .2s}
+.mod:hover{box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.mod-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:12px}
+.mod h3{font-size:15px;font-weight:600;margin-bottom:6px}
+.mod p{font-size:13px;color:var(--sub);line-height:1.6}
+.mod ul{list-style:none;margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
+.mod ul li{font-size:11px;padding:4px 10px;border-radius:6px;font-weight:500}
+.detail-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin:16px 0}
+.detail-card h3{font-size:16px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.detail-card h3 span{font-size:18px}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:520px){.detail-grid{grid-template-columns:1fr}}
+.detail-item{padding:12px 14px;border-radius:10px;font-size:13px}
+.detail-item strong{display:block;font-size:12px;margin-bottom:2px}
+.login-info{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin:20px 0}
+.login-info h3{font-size:16px;font-weight:600;margin-bottom:12px}
+.login-steps{display:flex;flex-direction:column;gap:10px}
+.login-step{display:flex;align-items:flex-start;gap:12px;font-size:13px;color:var(--sub)}
+.login-step .icon{width:32px;height:32px;border-radius:8px;background:var(--blue-bg);color:var(--blue-dark);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}
+.login-step strong{color:var(--text)}
+.future{background:var(--gray-bg);border:1px dashed var(--border);border-radius:14px;padding:20px 24px;margin:20px 0}
+.future h3{font-size:15px;font-weight:600;margin-bottom:6px;color:var(--sub)}
+.future p{font-size:13px;color:var(--hint)}
+.footer{text-align:center;margin-top:48px;padding:24px;font-size:12px;color:var(--hint)}
+.tag-teal{background:var(--teal-bg);color:var(--teal-dark)}
+.tag-purple{background:var(--purple-bg);color:var(--purple-dark)}
+.tag-coral{background:var(--coral-bg);color:var(--coral-dark)}
+.tag-amber{background:var(--amber-bg);color:var(--amber-dark)}
+.tag-blue{background:var(--blue-bg);color:var(--blue-dark)}
+.tag-green{background:var(--green-bg);color:var(--green-dark)}
+.accordion{margin:16px 0}
+.acc-header{width:100%;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 20px;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:border-radius .2s}
+.acc-header:hover{background:var(--gray-bg)}
+.acc-header .arrow{transition:transform .3s;font-size:12px;color:var(--hint)}
+.acc-header.open{border-radius:14px 14px 0 0;border-bottom-color:transparent}
+.acc-header.open .arrow{transform:rotate(180deg)}
+.acc-body{display:none;background:var(--card);border:1px solid var(--border);border-top:none;border-radius:0 0 14px 14px;padding:20px;animation:slideDown .3s ease}
+.acc-body.show{display:block}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.info-banner{background:linear-gradient(135deg,var(--blue-bg),var(--purple-bg));border-radius:14px;padding:20px 24px;margin:20px 0;display:flex;align-items:center;gap:16px}
+.info-banner .icon-wrap{width:48px;height:48px;background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.info-banner p{font-size:13px;color:var(--sub);line-height:1.6}
+.info-banner strong{color:var(--text)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">2026년 신규 도입</div>
+  <h1>닥터고블린컴퍼니 CRM</h1>
+  <p>방송환경 구축 · 고객관리 · 재고 · 배송을 하나로 통합하는 업무 관리 시스템</p>
+</div>
+
+<div class="container">
+
+  <div class="info-banner">
+    <div class="icon-wrap">🔑</div>
+    <p><strong>개인 계정으로 로그인합니다.</strong><br>각 사원에게 아이디와 비밀번호가 개별 발급되며, 역할(관리자·매니저·일반)에 따라 접근 권한이 다르게 설정됩니다.</p>
+  </div>
+
+  <div class="section-title">시스템 전체 구조</div>
+  <div class="section-desc">4가지 핵심 모듈이 하나의 시스템 안에서 연결됩니다.</div>
+
+  <div class="modules">
+    <div class="mod" onclick="toggleAcc('acc-schedule')">
+      <div class="mod-icon" style="background:var(--teal-bg)">📅</div>
+      <h3>방문 일정 관리</h3>
+      <p>고객사 방문 스케줄을 등록하고 캘린더로 확인합니다.</p>
+      <ul>
+        <li class="tag-teal">일정 등록</li>
+        <li class="tag-teal">캘린더 뷰</li>
+        <li class="tag-teal">담당자 필터</li>
+      </ul>
+    </div>
+    <div class="mod" onclick="toggleAcc('acc-customer')">
+      <div class="mod-icon" style="background:var(--purple-bg)">👤</div>
+      <h3>고객 정보 · 이력</h3>
+      <p>고객 등록, 검색, 상담 및 서비스 이력을 관리합니다.</p>
+      <ul>
+        <li class="tag-purple">고객 등록</li>
+        <li class="tag-purple">이력 조회</li>
+        <li class="tag-purple">상담 기록</li>
+      </ul>
+    </div>
+    <div class="mod" onclick="toggleAcc('acc-inventory')">
+      <div class="mod-icon" style="background:var(--coral-bg)">📦</div>
+      <h3>제품 재고 관리</h3>
+      <p>카테고리별 제품과 입출고 내역을 실시간으로 파악합니다.</p>
+      <ul>
+        <li class="tag-coral">제품 등록</li>
+        <li class="tag-coral">입출고 기록</li>
+        <li class="tag-coral">재고 현황</li>
+      </ul>
+    </div>
+    <div class="mod" onclick="toggleAcc('acc-delivery')">
+      <div class="mod-icon" style="background:var(--amber-bg)">🚚</div>
+      <h3>배송 관리</h3>
+      <p>주문 등록부터 배송 완료까지 전 과정을 추적합니다.</p>
+      <ul>
+        <li class="tag-amber">주문 처리</li>
+        <li class="tag-amber">배송 추적</li>
+        <li class="tag-amber">이력 관리</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-title">업무 흐름</div>
+  <div class="section-desc">고객 문의부터 서비스 완료까지 이렇게 진행됩니다.</div>
+
+  <div class="flow">
+    <div class="flow-step">
+      <div class="num" style="background:var(--blue)">1</div>
+      <h3>고객 문의 접수</h3>
+      <p>전화, 채팅, 이메일 등으로 고객(크리에이터/스트리머) 문의가 들어옵니다.</p>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="num" style="background:var(--teal)">2</div>
+      <h3>고객 등록 및 일정 생성</h3>
+      <p>신규 고객이면 CRM에 등록하고, 방문 일정(날짜·시간·담당자)을 잡습니다.</p>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="num" style="background:var(--purple)">3</div>
+      <h3>현장 방문 및 서비스</h3>
+      <p>방문 유형(설치, A/S, 상담, 컨설팅)에 따라 현장 서비스를 진행합니다.</p>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="num" style="background:var(--coral)">4</div>
+      <h3>결과 기록 및 후속 조치</h3>
+      <p>방문 결과를 메모하고, 필요 시 추가 장비 주문이나 배송을 연결합니다.</p>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="num" style="background:var(--amber)">5</div>
+      <h3>주문 · 배송 처리</h3>
+      <p>필요 장비를 주문 처리하고 배송 상태를 추적합니다. 모든 이력이 고객 카드에 남습니다.</p>
+    </div>
+  </div>
+
+  <div class="section-title">모듈 상세 안내</div>
+  <div class="section-desc">각 모듈을 클릭하면 상세 내용을 확인할 수 있습니다.</div>
+
+  <div class="accordion">
+    <div class="acc-header" id="acc-schedule" onclick="toggleAcc('acc-schedule')">
+      <span>📅 방문 일정 관리</span><span class="arrow">▼</span>
+    </div>
+    <div class="acc-body" id="acc-schedule-body">
+      <div class="detail-grid">
+        <div class="detail-item tag-teal">
+          <strong>기본 정보</strong>
+          일정 제목, 방문 날짜, 시작/종료 시간, 방문 장소, 상세 설명
+        </div>
+        <div class="detail-item tag-teal">
+          <strong>분류 · 상태</strong>
+          유형(방문·설치·A/S·상담), 상태(예정·완료·취소), 담당 직원
+        </div>
+        <div class="detail-item tag-teal">
+          <strong>캘린더 뷰</strong>
+          월간·주간·일간 보기, 담당자별 필터링, 드래그로 일정 이동
+        </div>
+        <div class="detail-item tag-teal">
+          <strong>결과 기록</strong>
+          방문 후 현장 상황, 추가 필요 장비, 후속 조치 메모 저장
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-header" id="acc-customer" onclick="toggleAcc('acc-customer')">
+      <span>👤 고객 정보 · 이력 관리</span><span class="arrow">▼</span>
+    </div>
+    <div class="acc-body" id="acc-customer-body">
+      <div class="detail-grid">
+        <div class="detail-item tag-purple">
+          <strong>고객 기본 정보</strong>
+          활동명, 실명, 연락처, 이메일, 플랫폼(트위치·유튜브·치지직 등), 채널 주소
+        </div>
+        <div class="detail-item tag-purple">
+          <strong>고객 상태 관리</strong>
+          리드(잠재)·활성·비활성 분류, 담당 직원 배정
+        </div>
+        <div class="detail-item tag-purple">
+          <strong>상담 이력</strong>
+          전화·방문·채팅·이메일·메모별 상담 내용 기록 및 시간순 조회
+        </div>
+        <div class="detail-item tag-purple">
+          <strong>통합 히스토리</strong>
+          방문 일정, 주문, 배송 내역이 고객 카드에 자동 연결
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-header" id="acc-inventory" onclick="toggleAcc('acc-inventory')">
+      <span>📦 제품 재고 관리</span><span class="arrow">▼</span>
+    </div>
+    <div class="acc-body" id="acc-inventory-body">
+      <div class="detail-grid">
+        <div class="detail-item tag-coral">
+          <strong>제품 등록</strong>
+          카테고리 분류, 상품명, 상품 코드(SKU), 매입가/판매가, 상세 설명
+        </div>
+        <div class="detail-item tag-coral">
+          <strong>재고 현황</strong>
+          현재 수량 실시간 확인, 안전 재고 미달 시 알림
+        </div>
+        <div class="detail-item tag-coral">
+          <strong>입출고 기록</strong>
+          입고·출고·조정·반품 유형별 수량 변동 이력 관리
+        </div>
+        <div class="detail-item tag-coral">
+          <strong>상품 상태</strong>
+          판매중·단종·품절 상태 관리, 주문과 자동 연동
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-header" id="acc-delivery" onclick="toggleAcc('acc-delivery')">
+      <span>🚚 배송 관리</span><span class="arrow">▼</span>
+    </div>
+    <div class="acc-body" id="acc-delivery-body">
+      <div class="detail-grid">
+        <div class="detail-item tag-amber">
+          <strong>주문 등록</strong>
+          고객·상품 선택, 수량 입력, 주문번호 자동 생성, 견적서 겸용
+        </div>
+        <div class="detail-item tag-amber">
+          <strong>주문 상태</strong>
+          초안·확정·진행중·완료·취소 단계별 관리
+        </div>
+        <div class="detail-item tag-amber">
+          <strong>배송 추적</strong>
+          택배사·운송장 번호 입력, 배송 상태(준비·발송·완료) 추적
+        </div>
+        <div class="detail-item tag-amber">
+          <strong>금액 관리</strong>
+          총액·할인·최종 결제 금액 자동 계산, 주문 이력 조회
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">로그인 및 권한 안내</div>
+  <div class="login-info">
+    <h3>🔐 개인 계정 로그인</h3>
+    <div class="login-steps">
+      <div class="login-step">
+        <div class="icon">1</div>
+        <div><strong>계정 발급</strong><br>관리자가 각 사원에게 아이디(이메일)와 임시 비밀번호를 발급합니다.</div>
+      </div>
+      <div class="login-step">
+        <div class="icon">2</div>
+        <div><strong>첫 로그인</strong><br>발급받은 계정으로 로그인 후 비밀번호를 변경합니다.</div>
+      </div>
+      <div class="login-step">
+        <div class="icon">3</div>
+        <div><strong>역할별 권한</strong><br>관리자(전체 관리), 매니저(팀 관리), 일반 사원(본인 업무) 3단계로 나뉩니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-card">
+    <h3><span>🛡️</span> 역할별 접근 권한</h3>
+    <div class="detail-grid">
+      <div class="detail-item tag-blue">
+        <strong>관리자 (Admin)</strong>
+        사원 계정 관리, 전체 데이터 조회·수정·삭제, 시스템 설정
+      </div>
+      <div class="detail-item tag-green">
+        <strong>매니저 (Manager)</strong>
+        팀 일정·고객 관리, 재고 입출고 승인, 주문 확정
+      </div>
+      <div class="detail-item tag-teal">
+        <strong>일반 사원 (Staff)</strong>
+        본인 담당 일정·고객 조회, 상담 기록 작성, 재고 확인
+      </div>
+      <div class="detail-item" style="background:var(--gray-bg)">
+        <strong style="color:var(--sub)">공통</strong>
+        <span style="color:var(--sub)">캘린더 조회, 고객 검색, 제품 목록 확인</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="future">
+    <h3>🔮 향후 추가 예정</h3>
+    <p>회사 홈페이지 연동 · 온라인 견적서 시스템 · 고객 포털(견적 확인/승인) 기능이 단계적으로 추가될 예정입니다.</p>
+  </div>
+
+  <div class="footer">
+    닥터고블린컴퍼니 CRM 시스템 · 사내 안내용<br>
+    문의사항은 개발팀에 연락해주세요
+  </div>
+</div>
+
+<script>
+function toggleAcc(id){
+  var h=document.getElementById(id);
+  var b=document.getElementById(id+'-body');
+  if(!h||!b)return;
+  var isOpen=h.classList.contains('open');
+  document.querySelectorAll('.acc-header').forEach(function(el){el.classList.remove('open')});
+  document.querySelectorAll('.acc-body').forEach(function(el){el.classList.remove('show')});
+  if(!isOpen){h.classList.add('open');b.classList.add('show')}
+}
+</script>
+</body>
+</html>
