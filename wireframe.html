@@ -268,12 +268,12 @@ body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);
   <!-- 03-2. 캘린더 모바일 -->
   <div class="section" id="s3m">
     <div class="section-head"><div class="snum" style="background:var(--teal)">03-M</div><h2>캘린더 (기술자 모바일)</h2></div>
-    <div class="section-desc">출장 기술자가 현장에서 PWA로 확인하는 모바일 캘린더. 오늘의 일정과 상세 정보를 빠르게 파악.</div>
+    <div class="section-desc">출장 기술자가 현장에서 PWA로 확인하는 모바일 캘린더. 월간/주간/일간 뷰 전환 가능.</div>
     <div class="wire">
-      <div class="wire-title">기술자 모바일 캘린더 — 일간 뷰 <span class="device">Mobile PWA</span></div>
+      <div class="wire-title">기술자 모바일 캘린더 — 월간 / 주간 / 일간 뷰 <span class="device">Mobile PWA</span></div>
       <div class="wire-body" style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap">
 
-        <!-- 화면 1: 일정 목록 -->
+        <!-- 화면 1: 월간 뷰 -->
         <div class="mobile-frame" style="width:320px">
           <div class="m-statusbar"><span>09:15</span><span>📶 🔋</span></div>
           <div style="background:var(--teal);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center">
@@ -281,7 +281,181 @@ body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);
             <span style="font-size:11px;opacity:.8">이*종 (관리자)</span>
           </div>
           <div style="background:#fff;padding:0">
-            <!-- 날짜 네비 -->
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid #eee">
+              <span style="font-size:12px;color:var(--hint)">◀</span>
+              <div style="font-size:15px;font-weight:700">2026년 3월</div>
+              <span style="font-size:12px;color:var(--hint)">▶</span>
+            </div>
+            <div style="display:flex;gap:0;padding:8px 16px">
+              <div style="flex:1;text-align:center;padding:6px;font-size:11px;background:var(--teal);color:#fff;border-radius:6px 0 0 6px;font-weight:600">월간</div>
+              <div style="flex:1;text-align:center;padding:6px;font-size:11px;background:var(--gray-bg);color:var(--sub)">주간</div>
+              <div style="flex:1;text-align:center;padding:6px;font-size:11px;background:var(--gray-bg);color:var(--sub);border-radius:0 6px 6px 0">일간</div>
+            </div>
+            <div style="padding:8px 16px 0">
+              <div class="m-cal-grid" style="gap:2px">
+                <div class="m-cal-head">월</div><div class="m-cal-head">화</div><div class="m-cal-head">수</div><div class="m-cal-head">목</div><div class="m-cal-head">금</div><div class="m-cal-head">토</div><div class="m-cal-head">일</div>
+                <div class="m-cal-day off" style="min-height:40px">23</div><div class="m-cal-day off" style="min-height:40px">24</div><div class="m-cal-day off" style="min-height:40px">25</div><div class="m-cal-day off" style="min-height:40px">26</div><div class="m-cal-day off" style="min-height:40px">27</div><div class="m-cal-day off" style="min-height:40px">28</div>
+                <div class="m-cal-day" style="min-height:40px">1</div>
+                <div class="m-cal-day" style="min-height:40px;position:relative">2<div style="position:absolute;bottom:2px;left:50%;transform:translateX(-50%);display:flex;gap:1px"><span style="width:5px;height:5px;border-radius:50%;background:var(--blue)"></span></div></div>
+                <div class="m-cal-day" style="min-height:40px;position:relative">3<div style="position:absolute;bottom:2px;left:50%;transform:translateX(-50%);display:flex;gap:1px"><span style="width:5px;height:5px;border-radius:50%;background:var(--blue)"></span><span style="width:5px;height:5px;border-radius:50%;background:var(--coral)"></span></div></div>
+                <div class="m-cal-day" style="min-height:40px">4</div>
+                <div class="m-cal-day" style="min-height:40px;position:relative">5<div style="position:absolute;bottom:2px;left:50%;transform:translateX(-50%);display:flex;gap:1px"><span style="width:5px;height:5px;border-radius:50%;background:var(--teal)"></span></div></div>
+                <div class="m-cal-day" style="min-height:40px;position:relative">6<div style="position:absolute;bottom:2px;left:50%;transform:translateX(-50%);display:flex;gap:1px"><span style="width:5px;height:5px;border-radius:50%;background:var(--blue)"></span></div></div>
+                <div class="m-cal-day" style="min-height:40px">7</div>
+                <div class="m-cal-day" style="min-height:40px">8</div>
+                <div class="m-cal-day" style="min-height:40px">9</div>
+                <div class="m-cal-day" style="min-height:40px;position:relative">10<div style="position:absolute;bottom:2px;left:50%;transform:translateX(-50%);display:flex;gap:1px"><span style="width:5px;height:5px;border-radius:50%;background:var(--blue)"></span><span style="width:5px;height:5px;border-radius:50%;background:var(--teal)"></span></div></div>
+                <div class="m-cal-day" style="min-height:40px">11</div>
+                <div class="m-cal-day" style="min-height:40px;position:relative">12<div style="position:absolute;bottom:2px;left:50%;transform:translateX(-50%);display:flex;gap:1px"><span style="width:5px;height:5px;border-radius:50%;background:var(--coral)"></span></div></div>
+                <div class="m-cal-day" style="min-height:40px">13</div>
+                <div class="m-cal-day" style="min-height:40px">14</div>
+                <div class="m-cal-day" style="min-height:40px">15</div>
+                <div class="m-cal-day" style="min-height:40px">16</div>
+                <div class="m-cal-day" style="min-height:40px;position:relative;background:var(--teal-bg);border-radius:6px;font-weight:700;color:var(--teal-dk)">17<div style="position:absolute;bottom:2px;left:50%;transform:translateX(-50%);display:flex;gap:1px"><span style="width:5px;height:5px;border-radius:50%;background:var(--blue)"></span><span style="width:5px;height:5px;border-radius:50%;background:var(--coral)"></span><span style="width:5px;height:5px;border-radius:50%;background:var(--teal)"></span></div></div>
+                <div class="m-cal-day" style="min-height:40px">18</div>
+                <div class="m-cal-day" style="min-height:40px;position:relative">19<div style="position:absolute;bottom:2px;left:50%;transform:translateX(-50%);display:flex;gap:1px"><span style="width:5px;height:5px;border-radius:50%;background:var(--blue)"></span></div></div>
+                <div class="m-cal-day" style="min-height:40px">20</div>
+                <div class="m-cal-day" style="min-height:40px">21</div>
+                <div class="m-cal-day" style="min-height:40px">22</div>
+                <div class="m-cal-day" style="min-height:40px;position:relative">23<div style="position:absolute;bottom:2px;left:50%;transform:translateX(-50%);display:flex;gap:1px"><span style="width:5px;height:5px;border-radius:50%;background:var(--blue)"></span></div></div>
+                <div class="m-cal-day" style="min-height:40px">24</div>
+                <div class="m-cal-day" style="min-height:40px;position:relative">25<div style="position:absolute;bottom:2px;left:50%;transform:translateX(-50%);display:flex;gap:1px"><span style="width:5px;height:5px;border-radius:50%;background:var(--teal)"></span></div></div>
+                <div class="m-cal-day" style="min-height:40px">26</div>
+                <div class="m-cal-day" style="min-height:40px">27</div>
+                <div class="m-cal-day" style="min-height:40px">28</div>
+                <div class="m-cal-day" style="min-height:40px">29</div>
+                <div class="m-cal-day" style="min-height:40px">30</div>
+                <div class="m-cal-day" style="min-height:40px">31</div>
+              </div>
+              <div style="display:flex;gap:10px;margin:10px 0;font-size:9px;color:var(--hint);justify-content:center">
+                <span><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--blue);margin-right:2px"></span>방문</span>
+                <span><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--teal);margin-right:2px"></span>원격</span>
+                <span><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--coral);margin-right:2px"></span>AS</span>
+              </div>
+            </div>
+            <!-- 선택된 날짜 하단 미리보기 -->
+            <div style="padding:0 16px 12px">
+              <div style="font-size:11px;font-weight:600;margin-bottom:6px;color:var(--text)">3월 17일 (오늘) — 3건</div>
+              <div style="border-left:3px solid var(--blue);padding:6px 10px;margin-bottom:4px;font-size:10px;background:var(--blue-bg);border-radius:0 6px 6px 0"><strong>10:00</strong> 김*수 방문 세팅</div>
+              <div style="border-left:3px solid var(--coral);padding:6px 10px;margin-bottom:4px;font-size:10px;background:var(--coral-bg);border-radius:0 6px 6px 0"><strong>14:00</strong> 이*영 AS 방문</div>
+              <div style="border-left:3px solid var(--teal);padding:6px 10px;font-size:10px;background:var(--teal-bg);border-radius:0 6px 6px 0"><strong>17:00</strong> 박*진 원격 세팅</div>
+            </div>
+            <div style="display:flex;border-top:1px solid #eee;background:#fff">
+              <div style="flex:1;text-align:center;padding:10px 0;font-size:10px;color:var(--teal);font-weight:600;border-top:2px solid var(--teal)">📅 일정</div>
+              <div style="flex:1;text-align:center;padding:10px 0;font-size:10px;color:var(--hint)">📋 세팅</div>
+              <div style="flex:1;text-align:center;padding:10px 0;font-size:10px;color:var(--hint)">🔔 알림</div>
+              <div style="flex:1;text-align:center;padding:10px 0;font-size:10px;color:var(--hint)">👤 내정보</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 화면 2: 주간 뷰 -->
+        <div class="mobile-frame" style="width:320px">
+          <div class="m-statusbar"><span>09:15</span><span>📶 🔋</span></div>
+          <div style="background:var(--teal);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:13px;font-weight:600">📅 내 일정</span>
+            <span style="font-size:11px;opacity:.8">이*종 (관리자)</span>
+          </div>
+          <div style="background:#fff;padding:0">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid #eee">
+              <span style="font-size:12px;color:var(--hint)">◀</span>
+              <div style="text-align:center">
+                <div style="font-size:15px;font-weight:700">3월 3주차</div>
+                <div style="font-size:10px;color:var(--hint)">3.16 (월) ~ 3.22 (일)</div>
+              </div>
+              <span style="font-size:12px;color:var(--hint)">▶</span>
+            </div>
+            <div style="display:flex;gap:0;padding:8px 16px">
+              <div style="flex:1;text-align:center;padding:6px;font-size:11px;background:var(--gray-bg);color:var(--sub);border-radius:6px 0 0 6px">월간</div>
+              <div style="flex:1;text-align:center;padding:6px;font-size:11px;background:var(--teal);color:#fff;font-weight:600">주간</div>
+              <div style="flex:1;text-align:center;padding:6px;font-size:11px;background:var(--gray-bg);color:var(--sub);border-radius:0 6px 6px 0">일간</div>
+            </div>
+            <!-- 주간 날짜 헤더 -->
+            <div style="display:flex;padding:8px 10px 0;gap:2px">
+              <div style="flex:1;text-align:center;font-size:9px;color:var(--hint);padding:4px 0">월<br><span style="font-size:11px;color:var(--sub)">16</span></div>
+              <div style="flex:1;text-align:center;font-size:9px;color:var(--hint);padding:4px 0;background:var(--teal-bg);border-radius:6px">화<br><span style="font-size:11px;font-weight:700;color:var(--teal-dk)">17</span></div>
+              <div style="flex:1;text-align:center;font-size:9px;color:var(--hint);padding:4px 0">수<br><span style="font-size:11px;color:var(--sub)">18</span></div>
+              <div style="flex:1;text-align:center;font-size:9px;color:var(--hint);padding:4px 0">목<br><span style="font-size:11px;color:var(--sub)">19</span></div>
+              <div style="flex:1;text-align:center;font-size:9px;color:var(--hint);padding:4px 0">금<br><span style="font-size:11px;color:var(--sub)">20</span></div>
+              <div style="flex:1;text-align:center;font-size:9px;color:var(--hint);padding:4px 0">토<br><span style="font-size:11px;color:var(--sub)">21</span></div>
+              <div style="flex:1;text-align:center;font-size:9px;color:var(--hint);padding:4px 0">일<br><span style="font-size:11px;color:var(--sub)">22</span></div>
+            </div>
+            <!-- 주간 타임라인 -->
+            <div style="padding:8px 10px 12px;font-size:10px">
+              <!-- 월 16 -->
+              <div style="display:flex;gap:4px;margin-bottom:8px;align-items:flex-start">
+                <div style="width:28px;font-size:10px;color:var(--hint);padding-top:4px;text-align:right;flex-shrink:0">월 16</div>
+                <div style="flex:1;border-left:3px solid var(--blue);background:var(--blue-bg);padding:6px 8px;border-radius:0 6px 6px 0">
+                  <div style="font-weight:600;color:var(--blue-dk)">10:00 방문 세팅</div>
+                  <div style="color:var(--sub);font-size:9px">정*호 님 · 경기 성남시</div>
+                </div>
+              </div>
+              <!-- 화 17 오늘 -->
+              <div style="display:flex;gap:4px;margin-bottom:3px;align-items:flex-start">
+                <div style="width:28px;font-size:10px;color:var(--teal);font-weight:700;padding-top:4px;text-align:right;flex-shrink:0">화 17</div>
+                <div style="flex:1;border-left:3px solid var(--blue);background:var(--blue-bg);padding:6px 8px;border-radius:0 6px 6px 0">
+                  <div style="font-weight:600;color:var(--blue-dk)">10:00 방문 세팅</div>
+                  <div style="color:var(--sub);font-size:9px">김*수 님 · 서울 마포구</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:4px;margin-bottom:3px;align-items:flex-start">
+                <div style="width:28px;flex-shrink:0"></div>
+                <div style="flex:1;border-left:3px solid var(--coral);background:var(--coral-bg);padding:6px 8px;border-radius:0 6px 6px 0">
+                  <div style="font-weight:600;color:var(--coral-dk)">14:00 AS 방문</div>
+                  <div style="color:var(--sub);font-size:9px">이*영 님 · 서울 강남구</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:4px;margin-bottom:8px;align-items:flex-start">
+                <div style="width:28px;flex-shrink:0"></div>
+                <div style="flex:1;border-left:3px solid var(--teal);background:var(--teal-bg);padding:6px 8px;border-radius:0 6px 6px 0">
+                  <div style="font-weight:600;color:var(--teal-dk)">17:00 원격 세팅</div>
+                  <div style="color:var(--sub);font-size:9px">박*진 님 · 원격</div>
+                </div>
+              </div>
+              <!-- 수 18 -->
+              <div style="display:flex;gap:4px;margin-bottom:8px;align-items:flex-start">
+                <div style="width:28px;font-size:10px;color:var(--hint);padding-top:4px;text-align:right;flex-shrink:0">수 18</div>
+                <div style="flex:1;padding:6px 8px;font-size:10px;color:var(--hint)">일정 없음</div>
+              </div>
+              <!-- 목 19 -->
+              <div style="display:flex;gap:4px;margin-bottom:8px;align-items:flex-start">
+                <div style="width:28px;font-size:10px;color:var(--hint);padding-top:4px;text-align:right;flex-shrink:0">목 19</div>
+                <div style="flex:1;border-left:3px solid var(--blue);background:var(--blue-bg);padding:6px 8px;border-radius:0 6px 6px 0">
+                  <div style="font-weight:600;color:var(--blue-dk)">09:00 방문 세팅</div>
+                  <div style="color:var(--sub);font-size:9px">최*혁 님 · 서울 송파구</div>
+                </div>
+              </div>
+              <!-- 금 20 -->
+              <div style="display:flex;gap:4px;margin-bottom:8px;align-items:flex-start">
+                <div style="width:28px;font-size:10px;color:var(--hint);padding-top:4px;text-align:right;flex-shrink:0">금 20</div>
+                <div style="flex:1;border-left:3px solid var(--blue);background:var(--blue-bg);padding:6px 8px;border-radius:0 6px 6px 0">
+                  <div style="font-weight:600;color:var(--blue-dk)">11:00 방문 세팅</div>
+                  <div style="color:var(--sub);font-size:9px">한*미 님 · 인천 연수구</div>
+                </div>
+              </div>
+              <!-- 토일 -->
+              <div style="display:flex;gap:4px;align-items:flex-start">
+                <div style="width:28px;font-size:10px;color:#ccc;padding-top:4px;text-align:right;flex-shrink:0">토~일</div>
+                <div style="flex:1;padding:6px 8px;font-size:10px;color:#ccc">휴무</div>
+              </div>
+            </div>
+            <div style="display:flex;border-top:1px solid #eee;background:#fff">
+              <div style="flex:1;text-align:center;padding:10px 0;font-size:10px;color:var(--teal);font-weight:600;border-top:2px solid var(--teal)">📅 일정</div>
+              <div style="flex:1;text-align:center;padding:10px 0;font-size:10px;color:var(--hint)">📋 세팅</div>
+              <div style="flex:1;text-align:center;padding:10px 0;font-size:10px;color:var(--hint)">🔔 알림</div>
+              <div style="flex:1;text-align:center;padding:10px 0;font-size:10px;color:var(--hint)">👤 내정보</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 화면 3: 일간 뷰 -->
+        <div class="mobile-frame" style="width:320px">
+          <div class="m-statusbar"><span>09:15</span><span>📶 🔋</span></div>
+          <div style="background:var(--teal);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:13px;font-weight:600">📅 내 일정</span>
+            <span style="font-size:11px;opacity:.8">이*종 (관리자)</span>
+          </div>
+          <div style="background:#fff;padding:0">
             <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid #eee">
               <span style="font-size:12px;color:var(--hint)">◀</span>
               <div style="text-align:center">
@@ -290,13 +464,11 @@ body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);
               </div>
               <span style="font-size:12px;color:var(--hint)">▶</span>
             </div>
-            <!-- 뷰 전환 -->
             <div style="display:flex;gap:0;padding:8px 16px">
-              <div style="flex:1;text-align:center;padding:6px;font-size:11px;background:var(--gray-bg);border-radius:6px 0 0 6px;color:var(--sub)">월간</div>
+              <div style="flex:1;text-align:center;padding:6px;font-size:11px;background:var(--gray-bg);color:var(--sub);border-radius:6px 0 0 6px">월간</div>
               <div style="flex:1;text-align:center;padding:6px;font-size:11px;background:var(--gray-bg);color:var(--sub)">주간</div>
               <div style="flex:1;text-align:center;padding:6px;font-size:11px;background:var(--teal);color:#fff;border-radius:0 6px 6px 0;font-weight:600">일간</div>
             </div>
-            <!-- 일정 카드들 -->
             <div style="padding:12px 16px">
               <div style="border-left:3px solid var(--blue);background:var(--blue-bg);border-radius:0 8px 8px 0;padding:10px 12px;margin-bottom:10px">
                 <div style="display:flex;justify-content:space-between;align-items:center">
@@ -334,7 +506,6 @@ body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);
                 </div>
               </div>
             </div>
-            <!-- 하단 탭바 -->
             <div style="display:flex;border-top:1px solid #eee;background:#fff">
               <div style="flex:1;text-align:center;padding:10px 0;font-size:10px;color:var(--teal);font-weight:600;border-top:2px solid var(--teal)">📅 일정</div>
               <div style="flex:1;text-align:center;padding:10px 0;font-size:10px;color:var(--hint)">📋 세팅</div>
@@ -344,7 +515,13 @@ body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);
           </div>
         </div>
 
-        <!-- 화면 2: 일정 상세 -->
+      </div>
+    </div>
+
+    <!-- 일정 상세 화면 -->
+    <div class="wire" style="margin-top:16px">
+      <div class="wire-title">일정 상세 (카드 탭 시 진입) <span class="device">Mobile PWA</span></div>
+      <div class="wire-body" style="display:flex;justify-content:center">
         <div class="mobile-frame" style="width:320px">
           <div class="m-statusbar"><span>09:16</span><span>📶 🔋</span></div>
           <div style="background:var(--blue);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center">
