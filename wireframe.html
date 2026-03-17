@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>닥터고블린컴퍼니 CRM 화면 설계서</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f5f5f0;--card:#fff;--text:#2c2c2a;--sub:#73726c;--hint:#9c9a92;--border:#ddd;--blue:#378ADD;--blue-bg:#E6F1FB;--blue-dk:#0C447C;--teal:#1D9E75;--teal-bg:#E1F5EE;--teal-dk:#085041;--purple:#534AB7;--purple-bg:#EEEDFE;--purple-dk:#3C3489;--coral:#D85A30;--coral-bg:#FAECE7;--coral-dk:#712B13;--amber:#BA7517;--amber-bg:#FAEEDA;--amber-dk:#633806;--green:#639922;--green-bg:#EAF3DE;--green-dk:#27500A;--gray-bg:#eeece5}
+body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;letter-spacing:-.2px}
+.hero{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:60px 24px 48px;text-align:center}
+.hero .badge{display:inline-block;background:rgba(255,255,255,.12);padding:5px 14px;border-radius:16px;font-size:12px;margin-bottom:16px}
+.hero h1{font-size:26px;font-weight:700;margin-bottom:6px}
+.hero p{font-size:14px;opacity:.75;max-width:500px;margin:0 auto}
+.container{max-width:840px;margin:0 auto;padding:0 20px 80px}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin:32px 0}
+.toc h2{font-size:16px;font-weight:700;margin-bottom:12px}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+@media(max-width:560px){.toc-grid{grid-template-columns:1fr}}
+.toc-item{font-size:13px;padding:8px 12px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s}
+.toc-item:hover{background:var(--gray-bg)}
+.toc-item .num{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
+.section{margin-top:48px}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.section-head .snum{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff}
+.section-head h2{font-size:18px;font-weight:700}
+.section-desc{font-size:13px;color:var(--sub);margin-bottom:20px}
+.wire{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin:16px 0}
+.wire-title{background:var(--gray-bg);padding:10px 16px;font-size:12px;font-weight:600;color:var(--sub);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.wire-title .device{font-size:11px;font-weight:400;background:#fff;padding:2px 10px;border-radius:10px;border:1px solid var(--border)}
+.wire-body{padding:20px}
+.mock{background:#fafaf7;border:1px solid #e8e6e0;border-radius:10px;overflow:hidden}
+.mock-topbar{background:#2c2c2a;color:#fff;padding:10px 16px;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:space-between}
+.mock-topbar .logo{display:flex;align-items:center;gap:6px}
+.mock-topbar .user{font-size:11px;opacity:.7}
+.mock-nav{display:flex;gap:0;background:#363634;padding:0 12px;overflow-x:auto}
+.mock-nav a{padding:8px 14px;font-size:11px;color:rgba(255,255,255,.6);text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap}
+.mock-nav a.active{color:#fff;border-bottom-color:var(--blue)}
+.mock-content{padding:16px}
+.mock-row{display:flex;gap:12px;margin-bottom:12px}
+@media(max-width:560px){.mock-row{flex-direction:column}}
+.mock-col{flex:1}
+.m-card{background:#fff;border:1px solid #e8e6e0;border-radius:8px;padding:12px;margin-bottom:10px}
+.m-card h4{font-size:12px;font-weight:600;margin-bottom:6px;color:var(--text)}
+.m-label{font-size:10px;color:var(--hint);margin-bottom:3px}
+.m-input{background:#f0eeea;border:1px solid #ddd;border-radius:5px;padding:6px 8px;font-size:11px;color:var(--sub);margin-bottom:6px;width:100%}
+.m-input.select::after{content:'▼';float:right;font-size:8px}
+.m-btn{display:inline-block;padding:5px 12px;border-radius:5px;font-size:11px;font-weight:600;cursor:default}
+.m-btn-primary{background:var(--blue);color:#fff}
+.m-btn-outline{background:#fff;color:var(--sub);border:1px solid var(--border)}
+.m-btn-danger{background:#FCEBEB;color:#791F1F}
+.m-btn-success{background:var(--teal-bg);color:var(--teal-dk)}
+.m-table{width:100%;font-size:11px;border-collapse:collapse}
+.m-table th,.m-table td{padding:6px 8px;border-bottom:1px solid #eee;text-align:left}
+.m-table th{background:var(--gray-bg);font-weight:600;color:var(--sub);font-size:10px}
+.m-table tr:last-child td{border-bottom:none}
+.m-badge{display:inline-block;font-size:9px;padding:2px 7px;border-radius:4px;font-weight:600}
+.m-stat{text-align:center;padding:12px 8px}
+.m-stat .val{font-size:22px;font-weight:700}
+.m-stat .label{font-size:10px;color:var(--hint);margin-top:2px}
+.m-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;font-size:10px;text-align:center}
+.m-cal-head{font-weight:600;color:var(--sub);padding:4px 0}
+.m-cal-day{padding:6px 2px;border-radius:4px;cursor:default;min-height:28px}
+.m-cal-day.has{background:var(--blue-bg);color:var(--blue-dk);font-weight:600}
+.m-cal-day.empty{background:var(--teal-bg);color:var(--teal-dk)}
+.m-cal-day.off{color:#ccc}
+.m-check{display:flex;align-items:center;gap:6px;font-size:11px;padding:4px 0;color:var(--sub)}
+.m-check .box{width:14px;height:14px;border:1.5px solid var(--border);border-radius:3px;flex-shrink:0}
+.m-check .box.checked{background:var(--teal);border-color:var(--teal)}
+.m-check .box.checked::after{content:'✓';color:#fff;font-size:9px;display:flex;align-items:center;justify-content:center;height:100%}
+.m-check.done{text-decoration:line-through;color:var(--hint)}
+.m-tab{display:flex;gap:0;margin-bottom:12px}
+.m-tab span{padding:6px 14px;font-size:11px;border:1px solid var(--border);cursor:default;background:#fff;color:var(--sub)}
+.m-tab span:first-child{border-radius:6px 0 0 6px}
+.m-tab span:last-child{border-radius:0 6px 6px 0}
+.m-tab span.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.m-flow{display:flex;gap:4px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.m-flow .step{padding:5px 10px;border-radius:6px;font-size:10px;font-weight:600;color:#fff}
+.m-flow .arr{color:var(--hint);font-size:12px}
+.m-placeholder{background:#f0eeea;border:2px dashed #ddd;border-radius:8px;padding:20px;text-align:center;color:var(--hint);font-size:12px;margin:8px 0}
+.m-toggle{display:flex;align-items:center;gap:8px;font-size:11px;margin:6px 0}
+.m-toggle .track{width:28px;height:16px;background:var(--teal);border-radius:8px;position:relative}
+.m-toggle .track .thumb{width:12px;height:12px;background:#fff;border-radius:50%;position:absolute;top:2px;right:2px}
+.m-divider{border:none;border-top:1px dashed #ddd;margin:12px 0}
+.note-box{background:var(--amber-bg);border-radius:8px;padding:10px 14px;font-size:11px;color:var(--amber-dk);margin:10px 0;line-height:1.6}
+.note-box strong{color:var(--amber-dk)}
+.spec-list{font-size:11px;color:var(--sub);line-height:1.8;margin:8px 0}
+.spec-list li{margin-left:16px}
+.footer{text-align:center;padding:40px 24px;font-size:12px;color:var(--hint)}
+.mobile-frame{max-width:360px;margin:0 auto;border:2px solid #ddd;border-radius:20px;overflow:hidden;background:#fafaf7}
+.mobile-frame .m-statusbar{background:#2c2c2a;color:#fff;padding:4px 16px;font-size:9px;display:flex;justify-content:space-between}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">화면 설계서 v1.0</div>
+  <h1>닥터고블린컴퍼니 CRM</h1>
+  <p>UI 와이어프레임 · 화면 구성 · 인터랙션 명세</p>
+  <div style="margin-top:20px"><a href="index.html" style="display:inline-block;background:rgba(255,255,255,.18);color:#fff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.2);transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.3)'" onmouseout="this.style.background='rgba(255,255,255,.18)'">← 기획서로 돌아가기</a></div>
+</div>
+
+<div class="container">
+
+  <div class="toc">
+    <h2>목차</h2>
+    <div class="toc-grid">
+      <div class="toc-item" onclick="document.getElementById('s1').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--blue)">01</div>로그인</div>
+      <div class="toc-item" onclick="document.getElementById('s2').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--purple)">02</div>대시보드</div>
+      <div class="toc-item" onclick="document.getElementById('s3').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--teal)">03</div>캘린더 (사내)</div>
+      <div class="toc-item" onclick="document.getElementById('s4').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--teal)">04</div>캘린더 (의뢰자용)</div>
+      <div class="toc-item" onclick="document.getElementById('s5').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--coral)">05</div>의뢰인 등록/수정</div>
+      <div class="toc-item" onclick="document.getElementById('s6').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--coral)">06</div>의뢰인 이력 조회</div>
+      <div class="toc-item" onclick="document.getElementById('s7').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--amber)">07</div>상담 이력 작성</div>
+      <div class="toc-item" onclick="document.getElementById('s8').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--green)">08</div>방문 세팅 (모바일)</div>
+      <div class="toc-item" onclick="document.getElementById('s9').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--green)">09</div>원격 세팅</div>
+      <div class="toc-item" onclick="document.getElementById('s10').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:#1a7060">10</div>공간 맵핑</div>
+      <div class="toc-item" onclick="document.getElementById('s11').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--amber)">11</div>결제/견적</div>
+      <div class="toc-item" onclick="document.getElementById('s12').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--coral)">12</div>재고/ERP</div>
+      <div class="toc-item" onclick="document.getElementById('s13').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--purple)">13</div>통계/리포트</div>
+      <div class="toc-item" onclick="document.getElementById('s14').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:#555">14</div>알림 센터</div>
+    </div>
+  </div>
+
+  <!-- 01. 로그인 -->
+  <div class="section" id="s1">
+    <div class="section-head"><div class="snum" style="background:var(--blue)">01</div><h2>로그인</h2></div>
+    <div class="section-desc">개인 계정 기반 로그인 화면. 역할(마스터/관리자/세일즈/멤버/프리랜서)은 로그인 후 서버에서 자동 판별.</div>
+    <div class="wire">
+      <div class="wire-title">로그인 화면 <span class="device">Desktop / Mobile 공용</span></div>
+      <div class="wire-body" style="display:flex;justify-content:center">
+        <div style="width:320px">
+          <div style="text-align:center;margin-bottom:24px">
+            <div style="font-size:20px;font-weight:700;margin-bottom:4px">닥터고블린 CRM</div>
+            <div style="font-size:12px;color:var(--hint)">사내 업무 관리 시스템</div>
+          </div>
+          <div class="m-label">아이디 (이메일)</div>
+          <div class="m-input">user@drgoblin.com</div>
+          <div class="m-label">비밀번호</div>
+          <div class="m-input">••••••••</div>
+          <div style="margin:16px 0"><div class="m-btn m-btn-primary" style="width:100%;text-align:center;padding:10px">로그인</div></div>
+          <div style="text-align:center;font-size:11px;color:var(--hint)">비밀번호를 잊으셨나요? <span style="color:var(--blue)">비밀번호 재설정</span></div>
+        </div>
+      </div>
+    </div>
+    <ul class="spec-list">
+      <li>첫 로그인 시 임시 비밀번호 → 비밀번호 변경 강제 유도</li>
+      <li>로그인 실패 5회 시 계정 잠금 + 관리자 해제 필요</li>
+      <li>역할별 접근 가능 메뉴가 GNB에서 자동으로 필터링됨</li>
+    </ul>
+  </div>
+
+  <!-- 02. 대시보드 -->
+  <div class="section" id="s2">
+    <div class="section-head"><div class="snum" style="background:var(--purple)">02</div><h2>대시보드</h2></div>
+    <div class="section-desc">로그인 후 첫 화면. 오늘의 핵심 지표와 위젯을 한눈에 확인.</div>
+    <div class="wire">
+      <div class="wire-title">대시보드 메인 <span class="device">Desktop</span></div>
+      <div class="wire-body">
+        <div class="mock">
+          <div class="mock-topbar">
+            <div class="logo">🟢 닥터고블린 CRM</div>
+            <div class="user">이상흠 (관리자) ▾</div>
+          </div>
+          <div class="mock-nav">
+            <a class="active">대시보드</a><a>캘린더</a><a>의뢰인</a><a>상담</a><a>세팅</a><a>결제</a><a>재고</a><a>통계</a><a>알림</a>
+          </div>
+          <div class="mock-content">
+            <div class="mock-row">
+              <div class="mock-col"><div class="m-card"><div class="m-stat"><div class="val" style="color:var(--blue)">12</div><div class="label">오늘 예정 일정</div></div></div></div>
+              <div class="mock-col"><div class="m-card"><div class="m-stat"><div class="val" style="color:var(--teal)">89%</div><div class="label">상담→결제 전환율</div></div></div></div>
+              <div class="mock-col"><div class="m-card"><div class="m-stat"><div class="val" style="color:var(--amber)">3</div><div class="label">재고 부족 항목</div></div></div></div>
+              <div class="mock-col"><div class="m-card"><div class="m-stat"><div class="val" style="color:var(--green)">₩4.2M</div><div class="label">이번 달 매출</div></div></div></div>
+            </div>
+            <div class="mock-row">
+              <div class="mock-col">
+                <div class="m-card">
+                  <h4>📅 미니 캘린더</h4>
+                  <div class="m-cal-grid" style="margin-top:8px">
+                    <div class="m-cal-head">월</div><div class="m-cal-head">화</div><div class="m-cal-head">수</div><div class="m-cal-head">목</div><div class="m-cal-head">금</div><div class="m-cal-head">토</div><div class="m-cal-head">일</div>
+                    <div class="m-cal-day off">24</div><div class="m-cal-day off">25</div><div class="m-cal-day off">26</div><div class="m-cal-day off">27</div><div class="m-cal-day off">28</div><div class="m-cal-day">1</div><div class="m-cal-day">2</div>
+                    <div class="m-cal-day has">3</div><div class="m-cal-day">4</div><div class="m-cal-day has">5</div><div class="m-cal-day">6</div><div class="m-cal-day has">7</div><div class="m-cal-day">8</div><div class="m-cal-day">9</div>
+                    <div class="m-cal-day">10</div><div class="m-cal-day has">11</div><div class="m-cal-day">12</div><div class="m-cal-day has">13</div><div class="m-cal-day">14</div><div class="m-cal-day has">15</div><div class="m-cal-day">16</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mock-col">
+                <div class="m-card">
+                  <h4>📝 최근 공지/이슈</h4>
+                  <table class="m-table">
+                    <tr><td><span class="m-badge" style="background:var(--coral-bg);color:var(--coral-dk)">긴급</span> 모니터암 재고 부족</td><td style="color:var(--hint);font-size:10px">3/17</td></tr>
+                    <tr><td><span class="m-badge" style="background:var(--blue-bg);color:var(--blue-dk)">공지</span> 3월 정기 회의 안내</td><td style="color:var(--hint);font-size:10px">3/15</td></tr>
+                    <tr><td><span class="m-badge" style="background:var(--teal-bg);color:var(--teal-dk)">기술</span> OBS 업데이트 가이드</td><td style="color:var(--hint);font-size:10px">3/14</td></tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="mock-row">
+              <div class="mock-col">
+                <div class="m-card">
+                  <h4>🌐 외부 VOC</h4>
+                  <table class="m-table">
+                    <tr><td>제품 문의드립니다</td><td style="color:var(--hint);font-size:10px">홍*동</td><td style="color:var(--hint);font-size:10px">3/17</td></tr>
+                    <tr><td>방문 예약 가능한가요</td><td style="color:var(--hint);font-size:10px">김*수</td><td style="color:var(--hint);font-size:10px">3/16</td></tr>
+                  </table>
+                </div>
+              </div>
+              <div class="mock-col">
+                <div class="m-card">
+                  <h4>📊 재고 알림</h4>
+                  <table class="m-table">
+                    <tr><td>모니터암 (27")</td><td><span class="m-badge" style="background:#FCEBEB;color:#791F1F">2개</span></td></tr>
+                    <tr><td>HDMI 케이블 2M</td><td><span class="m-badge" style="background:var(--amber-bg);color:var(--amber-dk)">5개</span></td></tr>
+                    <tr><td>웹캠 C920</td><td><span class="m-badge" style="background:var(--teal-bg);color:var(--teal-dk)">12개</span></td></tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03. 캘린더 사내 -->
+  <div class="section" id="s3">
+    <div class="section-head"><div class="snum" style="background:var(--teal)">03</div><h2>캘린더 (사내)</h2></div>
+    <div class="section-desc">담당자별 일정 확인 및 등록. 월간/주간/일간 뷰 전환. 드래그로 일정 이동 가능.</div>
+    <div class="wire">
+      <div class="wire-title">사내 캘린더 뷰 <span class="device">Desktop</span></div>
+      <div class="wire-body">
+        <div class="mock">
+          <div class="mock-topbar"><div class="logo">🟢 닥터고블린 CRM</div><div class="user">이상흠 (관리자) ▾</div></div>
+          <div class="mock-nav"><a>대시보드</a><a class="active">캘린더</a><a>의뢰인</a><a>상담</a><a>세팅</a><a>결제</a><a>재고</a><a>통계</a><a>알림</a></div>
+          <div class="mock-content">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+              <div class="m-tab"><span class="active">월간</span><span>주간</span><span>일간</span></div>
+              <div style="display:flex;gap:6px;align-items:center;font-size:12px;font-weight:600">◀ &nbsp; 2026년 3월 &nbsp; ▶</div>
+              <div style="display:flex;gap:4px">
+                <div class="m-btn m-btn-outline" style="font-size:10px">담당자 필터 ▾</div>
+                <div class="m-btn m-btn-primary" style="font-size:10px">+ 일정 등록</div>
+              </div>
+            </div>
+            <div class="m-cal-grid" style="gap:1px">
+              <div class="m-cal-head">월</div><div class="m-cal-head">화</div><div class="m-cal-head">수</div><div class="m-cal-head">목</div><div class="m-cal-head">금</div><div class="m-cal-head">토</div><div class="m-cal-head">일</div>
+              <div class="m-cal-day" style="min-height:52px;text-align:left;padding:4px;border:1px solid #eee;border-radius:4px;font-size:10px"><strong>2</strong></div>
+              <div class="m-cal-day" style="min-height:52px;text-align:left;padding:4px;border:1px solid #eee;border-radius:4px;font-size:10px"><strong>3</strong><div style="background:var(--blue);color:#fff;padding:1px 4px;border-radius:3px;margin-top:2px;font-size:9px">10:00 김*수 방문</div></div>
+              <div class="m-cal-day" style="min-height:52px;text-align:left;padding:4px;border:1px solid #eee;border-radius:4px;font-size:10px"><strong>4</strong></div>
+              <div class="m-cal-day" style="min-height:52px;text-align:left;padding:4px;border:1px solid #eee;border-radius:4px;font-size:10px"><strong>5</strong><div style="background:var(--teal);color:#fff;padding:1px 4px;border-radius:3px;margin-top:2px;font-size:9px">14:00 원격 세팅</div></div>
+              <div class="m-cal-day" style="min-height:52px;text-align:left;padding:4px;border:1px solid #eee;border-radius:4px;font-size:10px"><strong>6</strong><div style="background:var(--coral);color:#fff;padding:1px 4px;border-radius:3px;margin-top:2px;font-size:9px">09:00 이*영 설치</div><div style="background:var(--amber);color:#fff;padding:1px 4px;border-radius:3px;margin-top:2px;font-size:9px">15:00 AS 방문</div></div>
+              <div class="m-cal-day" style="min-height:52px;text-align:left;padding:4px;border:1px solid #eee;border-radius:4px;font-size:10px;color:var(--hint)"><strong>7</strong></div>
+              <div class="m-cal-day" style="min-height:52px;text-align:left;padding:4px;border:1px solid #eee;border-radius:4px;font-size:10px;color:var(--hint)"><strong>8</strong></div>
+            </div>
+            <div style="display:flex;gap:12px;margin-top:10px;font-size:10px;color:var(--hint)">
+              <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--blue);margin-right:3px"></span>방문</span>
+              <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--teal);margin-right:3px"></span>원격</span>
+              <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--coral);margin-right:3px"></span>설치</span>
+              <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--amber);margin-right:3px"></span>AS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04. 의뢰자용 캘린더 -->
+  <div class="section" id="s4">
+    <div class="section-head"><div class="snum" style="background:var(--teal)">04</div><h2>캘린더 (의뢰자용 공개)</h2></div>
+    <div class="section-desc">로그인 불필요. 개인정보 완전 제거. 예약 가능/불가만 표시하는 외부 공유 페이지.</div>
+    <div class="wire">
+      <div class="wire-title">의뢰자 공개 캘린더 <span class="device">Mobile 최적화</span></div>
+      <div class="wire-body" style="display:flex;justify-content:center">
+        <div class="mobile-frame" style="width:320px">
+          <div class="m-statusbar"><span>9:41</span><span>📶 🔋</span></div>
+          <div style="background:#fff;padding:16px">
+            <div style="text-align:center;margin-bottom:16px">
+              <div style="font-size:16px;font-weight:700">닥터고블린컴퍼니</div>
+              <div style="font-size:11px;color:var(--hint)">예약 가능 일정 확인</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:13px;font-weight:600">
+              ◀ &nbsp; 2026년 3월 &nbsp; ▶
+            </div>
+            <div class="m-cal-grid" style="gap:3px">
+              <div class="m-cal-head">월</div><div class="m-cal-head">화</div><div class="m-cal-head">수</div><div class="m-cal-head">목</div><div class="m-cal-head">금</div><div class="m-cal-head">토</div><div class="m-cal-head">일</div>
+              <div class="m-cal-day off">24</div><div class="m-cal-day off">25</div><div class="m-cal-day off">26</div><div class="m-cal-day off">27</div><div class="m-cal-day off">28</div><div class="m-cal-day empty">1</div><div class="m-cal-day off">2</div>
+              <div class="m-cal-day has">3</div><div class="m-cal-day empty">4</div><div class="m-cal-day has">5</div><div class="m-cal-day empty">6</div><div class="m-cal-day has">7</div><div class="m-cal-day empty">8</div><div class="m-cal-day off">9</div>
+              <div class="m-cal-day empty">10</div><div class="m-cal-day has">11</div><div class="m-cal-day empty">12</div><div class="m-cal-day empty">13</div><div class="m-cal-day has">14</div><div class="m-cal-day empty">15</div><div class="m-cal-day off">16</div>
+              <div class="m-cal-day empty">17</div><div class="m-cal-day empty">18</div><div class="m-cal-day has">19</div><div class="m-cal-day empty">20</div><div class="m-cal-day empty">21</div><div class="m-cal-day empty">22</div><div class="m-cal-day off">23</div>
+            </div>
+            <div style="display:flex;gap:12px;margin-top:12px;font-size:10px;justify-content:center">
+              <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--teal-bg);border:1px solid var(--teal);margin-right:3px"></span>예약 가능</span>
+              <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--blue-bg);border:1px solid var(--blue);margin-right:3px"></span>예약 마감</span>
+              <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#eee;margin-right:3px"></span>휴무</span>
+            </div>
+            <div class="note-box" style="margin-top:14px;font-size:11px;background:var(--teal-bg);color:var(--teal-dk)">
+              희망하시는 날짜를 확인 후 담당 상담사에게 연락해주세요.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="spec-list">
+      <li>예약된 일정은 '예약 마감'으로만 표시 — 예약자 정보 일절 비노출</li>
+      <li>사내 캘린더와 실시간 동기화 — 신규 예약 시 즉시 반영</li>
+      <li>URL 기반 공유 (예: drgoblin.com/schedule)</li>
+    </ul>
+  </div>
+
+  <!-- 05. 의뢰인 등록 -->
+  <div class="section" id="s5">
+    <div class="section-head"><div class="snum" style="background:var(--coral)">05</div><h2>의뢰인 등록/수정</h2></div>
+    <div class="section-desc">신규 고객 등록 및 기존 정보 수정. 플랫폼 다중 선택, 등급 분류, 증빙 업로드.</div>
+    <div class="wire">
+      <div class="wire-title">의뢰인 등록 폼 <span class="device">Desktop</span></div>
+      <div class="wire-body">
+        <div class="mock-row">
+          <div class="mock-col">
+            <div class="m-card">
+              <h4>기본 정보</h4>
+              <div class="m-label">소속</div><div class="m-input">#엔터테인 8기참여 (태그)</div>
+              <div style="display:flex;gap:8px">
+                <div style="flex:1"><div class="m-label">이름 *</div><div class="m-input"></div></div>
+                <div style="flex:1"><div class="m-label">닉네임 *</div><div class="m-input"></div></div>
+              </div>
+              <div class="m-label">연락처 *</div>
+              <div style="display:flex;gap:8px;align-items:center">
+                <div class="m-input" style="flex:1">010-0000-0000</div>
+                <div class="m-btn m-btn-outline" style="font-size:10px">+ 추가 연락처</div>
+              </div>
+              <div class="m-label">주소 *</div>
+              <div style="display:flex;gap:8px">
+                <div class="m-input" style="flex:1;font-size:10px">우편번호</div>
+                <div class="m-input" style="flex:2;font-size:10px">도로명 주소 검색</div>
+                <div class="m-btn m-btn-outline" style="font-size:10px">검색</div>
+              </div>
+              <div class="m-label">상세주소</div><div class="m-input"></div>
+            </div>
+          </div>
+          <div class="mock-col">
+            <div class="m-card">
+              <h4>분류 정보</h4>
+              <div style="display:flex;gap:8px">
+                <div style="flex:1"><div class="m-label">등급</div><div class="m-input select">일반 / VIP / 렌탈 ▾</div></div>
+                <div style="flex:1"><div class="m-label">담당자</div><div class="m-input select">자동 입력 ▾</div></div>
+              </div>
+              <div class="m-label">플랫폼 *</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;margin:6px 0">
+                <div class="m-check"><div class="box checked"></div>유튜브</div>
+                <div class="m-check"><div class="box checked"></div>트위치</div>
+                <div class="m-check"><div class="box"></div>치지직</div>
+                <div class="m-check"><div class="box"></div>아프리카</div>
+                <div class="m-check"><div class="box"></div>팬더</div>
+                <div class="m-check"><div class="box"></div>기타</div>
+              </div>
+              <div class="m-label">콘텐츠 *</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;margin:6px 0">
+                <div class="m-check"><div class="box checked"></div>게임</div>
+                <div class="m-check"><div class="box"></div>소통</div>
+                <div class="m-check"><div class="box checked"></div>노래</div>
+                <div class="m-check"><div class="box"></div>기타</div>
+              </div>
+              <div class="m-label">성별</div>
+              <div style="display:flex;gap:12px;margin:6px 0;font-size:11px">
+                <div class="m-check"><div class="box checked" style="border-radius:50%"></div>여성</div>
+                <div class="m-check"><div class="box" style="border-radius:50%"></div>남성</div>
+              </div>
+            </div>
+            <div class="m-card">
+              <h4>증빙 서류</h4>
+              <div class="m-placeholder">📎 파일 업로드 (이미지, PDF)<br><span style="font-size:10px">현금영수증, 사업자등록증 등</span></div>
+            </div>
+            <div class="m-label">중요메모</div>
+            <div class="m-input" style="height:48px"></div>
+            <div style="display:flex;gap:8px;margin-top:12px;justify-content:flex-end">
+              <div class="m-btn m-btn-outline">취소</div>
+              <div class="m-btn m-btn-primary">저장</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06. 이력 조회 -->
+  <div class="section" id="s6">
+    <div class="section-head"><div class="snum" style="background:var(--coral)">06</div><h2>의뢰인 이력 조회</h2></div>
+    <div class="section-desc">플랫 리스트 뷰와 프로젝트 의뢰 계층형 뷰를 탭으로 전환.</div>
+    <div class="wire">
+      <div class="wire-title">통합 이력 조회 <span class="device">Desktop</span></div>
+      <div class="wire-body">
+        <div class="m-tab" style="margin-bottom:14px"><span class="active">상담 리스트</span><span>프로젝트 의뢰</span></div>
+        <table class="m-table">
+          <thead><tr><th></th><th>상담일</th><th>의뢰인</th><th>상담유형</th><th>상담결과</th><th>담당자</th></tr></thead>
+          <tbody>
+            <tr><td style="color:var(--amber)">★</td><td>2024.01.01</td><td>김*유</td><td><span class="m-badge" style="background:var(--amber-bg);color:var(--amber-dk)">결제(계약)</span></td><td>완료</td><td>조*원</td></tr>
+            <tr><td></td><td>2023.12.28</td><td>김*유</td><td>상담</td><td>진행중</td><td>이*현</td></tr>
+            <tr><td></td><td>2023.12.27</td><td>김*유</td><td>상담</td><td>진행중</td><td>김*한</td></tr>
+            <tr><td></td><td>2023.08.30</td><td>김*유</td><td>단순질문</td><td>완료</td><td>김*안</td></tr>
+            <tr><td style="color:var(--amber)">★</td><td>2023.06.08</td><td>김*유</td><td><span class="m-badge" style="background:var(--blue-bg);color:var(--blue-dk)">방문</span></td><td>완료</td><td>조*영</td></tr>
+          </tbody>
+        </table>
+        <div class="note-box">
+          <strong>프로젝트 의뢰 뷰:</strong> 상위 리스트 클릭 시 아코디언으로 하위 프로세스 이력(상담→장비파악→견적→결제→방문→AS)이 일괄 전개됩니다.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07. 상담 이력 작성 -->
+  <div class="section" id="s7">
+    <div class="section-head"><div class="snum" style="background:var(--amber)">07</div><h2>상담 이력 작성</h2></div>
+    <div class="section-desc">자동 필드 동기화, 상태 라이브 연동, 결제/예약 폼 동적 분기(Toggle).</div>
+    <div class="wire">
+      <div class="wire-title">상담 이력 작성 폼 <span class="device">Desktop</span></div>
+      <div class="wire-body">
+        <div class="m-card">
+          <h4>상담 이력 (기입)</h4>
+          <div class="mock-row">
+            <div class="mock-col">
+              <div class="m-label">닉네임</div><div class="m-input" style="background:#e8f4e8;border-color:var(--teal)">자동입력</div>
+              <div class="m-label">상담사</div><div class="m-input" style="background:#e8f4e8;border-color:var(--teal)">자동입력 (로그인 계정)</div>
+            </div>
+            <div class="mock-col">
+              <div class="m-label">상담일</div>
+              <div style="display:flex;gap:4px">
+                <div class="m-input" style="flex:1;background:#e8f4e8;border-color:var(--teal)">2026</div>
+                <div class="m-input" style="width:50px">03</div>
+                <div class="m-input" style="width:50px">17</div>
+              </div>
+              <div class="m-label">담당자</div><div class="m-input select">자동입력 (수정가능) ▾</div>
+            </div>
+          </div>
+          <div class="mock-row">
+            <div class="mock-col">
+              <div class="m-label">상담유형</div>
+              <div class="m-input select">상담 ▾</div>
+              <div style="font-size:10px;color:var(--hint);margin-top:2px">전화상담 / 공식(방문자) / 제휴문의 / 블로그문의 / 방문무료 / 단순질문</div>
+            </div>
+            <div class="mock-col">
+              <div class="m-label">상담결과</div>
+              <div class="m-input select">진행중(대화) ▾</div>
+              <div style="font-size:10px;color:var(--hint);margin-top:2px">진행중 / 대기 / 유효 / 무효 → 상위 리스트 상태 즉시 동기화</div>
+            </div>
+          </div>
+          <div class="m-label">상담내용</div>
+          <div class="m-input" style="height:80px">내용 입력</div>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:8px">
+            <div class="m-check"><div class="box"></div>중요</div>
+          </div>
+          <hr class="m-divider">
+          <div class="m-label">첨부파일</div>
+          <div class="m-placeholder">📎 이미지 업로드 영역 (최대 5장)</div>
+          <hr class="m-divider">
+          <div style="display:flex;gap:16px;margin:8px 0">
+            <div class="m-check"><div class="box"></div><strong style="color:var(--text)">☑ 결제</strong></div>
+            <div class="m-check"><div class="box"></div><strong style="color:var(--text)">☑ 예약</strong></div>
+          </div>
+          <div class="note-box" style="background:var(--blue-bg);color:var(--blue-dk)">
+            <strong>Toggle UI:</strong> '결제' 또는 '예약' 체크 시 → 페이지 이동 없이 바로 아래에 결제/예약 입력 폼이 확장됩니다.
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px;justify-content:flex-end">
+          <div class="m-btn m-btn-outline">취소</div>
+          <div class="m-btn m-btn-primary">저장</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 08. 방문 세팅 모바일 -->
+  <div class="section" id="s8">
+    <div class="section-head"><div class="snum" style="background:var(--green)">08</div><h2>방문 세팅 (모바일 PWA)</h2></div>
+    <div class="section-desc">현장 기술자가 스마트폰(PWA)에서 사용하는 방문 세팅 화면. 체크리스트 → 촬영 → 보고서 → 완료.</div>
+    <div class="wire">
+      <div class="wire-title">방문 세팅 — 기술자 모바일 뷰 <span class="device">Mobile PWA</span></div>
+      <div class="wire-body" style="display:flex;justify-content:center">
+        <div class="mobile-frame" style="width:320px">
+          <div class="m-statusbar"><span>14:32</span><span>📶 🔋</span></div>
+          <div style="background:var(--blue);color:#fff;padding:12px 16px;font-size:13px;font-weight:600;display:flex;justify-content:space-between;align-items:center">
+            <span>◀ 방문 세팅</span>
+            <span style="font-size:11px;opacity:.8">김*수 님</span>
+          </div>
+          <div style="background:#fff;padding:14px 16px">
+            <div class="m-flow">
+              <div class="step" style="background:var(--teal)">방문</div><div class="arr">→</div>
+              <div class="step" style="background:var(--green);border:2px solid #fff;outline:2px solid var(--green)">현장 세팅</div><div class="arr">→</div>
+              <div class="step" style="background:var(--gray-bg);color:var(--hint)">촬영</div><div class="arr">→</div>
+              <div class="step" style="background:var(--gray-bg);color:var(--hint)">보고서</div><div class="arr">→</div>
+              <div class="step" style="background:var(--gray-bg);color:var(--hint)">완료</div>
+            </div>
+            <hr class="m-divider">
+            <h4 style="font-size:13px;margin-bottom:8px">PC 및 모니터 설정</h4>
+            <div class="m-check done"><div class="box checked"></div>PC 본체 설치</div>
+            <div class="m-check done"><div class="box checked"></div>모니터 설치</div>
+            <div class="m-check"><div class="box"></div>전용 및 모니터 설치</div>
+            <div class="m-check"><div class="box"></div>사운드 관절 설치</div>
+            <div class="m-check"><div class="box"></div>모니터 설치</div>
+            <hr class="m-divider">
+            <h4 style="font-size:13px;margin-bottom:8px">소프트웨어</h4>
+            <div class="m-check done"><div class="box checked"></div>OBS 설치 및 설정</div>
+            <div class="m-check"><div class="box"></div>프릭샷 설정</div>
+            <div class="m-check"><div class="box"></div>VCAM 설치</div>
+            <hr class="m-divider">
+            <div style="display:flex;gap:8px;margin-top:12px">
+              <div class="m-btn m-btn-primary" style="flex:1;text-align:center">📷 세팅 촬영</div>
+              <div class="m-btn m-btn-outline" style="flex:1;text-align:center">다음 단계 →</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="note-box">
+      <strong>방문 완료 후:</strong> 자동으로 2주 AS 스케줄러 활성화. 별도 기간을 지정한 경우를 제외한 모든 건에 적용됩니다.
+    </div>
+  </div>
+
+  <!-- 09. 원격 세팅 -->
+  <div class="section" id="s9">
+    <div class="section-head"><div class="snum" style="background:var(--green)">09</div><h2>원격 세팅</h2></div>
+    <div class="section-desc">유료/무료 분기 → 원격 세팅 → 보고서. 처음 세팅(신규)인 경우에만 AS 2주 적용.</div>
+    <div class="wire">
+      <div class="wire-title">원격 세팅 폼 <span class="device">Desktop</span></div>
+      <div class="wire-body">
+        <div class="m-card">
+          <h4>원격 세팅 정보</h4>
+          <div class="mock-row">
+            <div class="mock-col">
+              <div class="m-label">의뢰인</div><div class="m-input">김*수 (누구세촌)</div>
+              <div class="m-label">세팅 유형</div>
+              <div style="display:flex;gap:8px;margin:8px 0">
+                <div class="m-check"><div class="box checked" style="border-radius:50%"></div><strong style="color:var(--text)">처음 세팅 (신규)</strong></div>
+                <div class="m-check"><div class="box" style="border-radius:50%"></div>추가 원격 지원</div>
+              </div>
+            </div>
+            <div class="mock-col">
+              <div class="m-label">비용 분류</div>
+              <div style="display:flex;gap:8px;margin:6px 0">
+                <div class="m-check"><div class="box checked" style="border-radius:50%;background:var(--amber);border-color:var(--amber)"></div><strong style="color:var(--text)">유료</strong></div>
+                <div class="m-check"><div class="box" style="border-radius:50%"></div>무료</div>
+              </div>
+              <div class="m-label">원격 세팅 비용</div>
+              <div class="m-input" style="border-color:var(--amber)">50,000 원</div>
+              <div style="font-size:10px;color:var(--amber-dk);margin-top:2px">→ 페이앱 결제 연동</div>
+            </div>
+          </div>
+          <hr class="m-divider">
+          <div class="m-label">원격 세팅 내용</div>
+          <div class="m-input" style="height:80px">변경된 설정값, 설치된 소프트웨어, 주의사항 등 기록</div>
+          <hr class="m-divider">
+          <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
+            <div class="m-toggle"><div class="track"><div class="thumb"></div></div>AS 2주 적용</div>
+            <span style="font-size:10px;color:var(--teal)">'처음 세팅' 선택 시 자동 ON</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px;justify-content:flex-end">
+          <div class="m-btn m-btn-outline">취소</div>
+          <div class="m-btn m-btn-success">원격 세팅 완료</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. 공간 맵핑 -->
+  <div class="section" id="s10">
+    <div class="section-head"><div class="snum" style="background:#1a7060">10</div><h2>장비 공간 맵핑</h2></div>
+    <div class="section-desc">방송 장비 배치를 시각적으로 관리. Drag &amp; Drop 지원. 소프트웨어 계층 설정 포함.</div>
+    <div class="wire">
+      <div class="wire-title">공간 맵핑 화면 <span class="device">Desktop</span></div>
+      <div class="wire-body">
+        <div class="m-card">
+          <h4>🖥️ 방송 공간 레이아웃 — 김*수 님</h4>
+          <div class="m-placeholder" style="min-height:180px">
+            <div style="margin-bottom:8px">📐 아이콘 기반 장비 배치도</div>
+            <div style="display:flex;justify-content:center;gap:24px;margin:16px 0">
+              <div style="text-align:center"><div style="width:60px;height:40px;border:2px solid var(--blue);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;margin-bottom:4px">🖥️ PC1</div><span style="font-size:9px">메인 PC</span></div>
+              <div style="text-align:center"><div style="width:60px;height:40px;border:2px solid var(--blue);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;margin-bottom:4px">🖥️ PC2</div><span style="font-size:9px">서브 PC</span></div>
+              <div style="text-align:center"><div style="width:40px;height:40px;border:2px solid var(--teal);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;margin-bottom:4px">🎤</div><span style="font-size:9px">마이크</span></div>
+              <div style="text-align:center"><div style="width:40px;height:40px;border:2px solid var(--amber);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;margin-bottom:4px">💡</div><span style="font-size:9px">조명1</span></div>
+              <div style="text-align:center"><div style="width:40px;height:40px;border:2px solid var(--amber);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;margin-bottom:4px">💡</div><span style="font-size:9px">조명2</span></div>
+            </div>
+            <span style="font-size:10px">Drag &amp; Drop으로 장비 위치 변경</span>
+          </div>
+        </div>
+        <div class="mock-row" style="margin-top:12px">
+          <div class="mock-col">
+            <div class="m-card">
+              <h4>소프트웨어 계층 (Depth)</h4>
+              <div style="font-size:11px;color:var(--sub);line-height:2">
+                <div style="padding-left:0">📂 YY</div>
+                <div style="padding-left:16px">└ 📂 넥스트클라우드</div>
+                <div style="padding-left:32px">└ 📄 프릭샷</div>
+                <div style="padding-left:0;margin-top:4px">📂 방송툴</div>
+                <div style="padding-left:16px">└ 📄 OBS</div>
+                <div style="padding-left:16px">└ 📄 XSplit</div>
+              </div>
+            </div>
+          </div>
+          <div class="mock-col">
+            <div class="m-card">
+              <h4>💡 조명 컨트롤러</h4>
+              <table class="m-table">
+                <thead><tr><th>조명</th><th>방향</th><th>제품명</th></tr></thead>
+                <tbody>
+                  <tr><td>조명 1</td><td>◉ 정 ○ 반</td><td style="font-size:10px">14인치 ONREF-A5</td></tr>
+                  <tr><td>조명 2</td><td>○ 정 ◉ 반</td><td style="font-size:10px">14인치 ONREF-AK</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. 결제/견적 -->
+  <div class="section" id="s11">
+    <div class="section-head"><div class="snum" style="background:var(--amber)">11</div><h2>결제/견적</h2></div>
+    <div class="section-desc">자산(제품)과 서비스를 분리한 결제 명세. 이전 견적 불러오기. 페이앱 결제 연동.</div>
+    <div class="wire">
+      <div class="wire-title">결제/견적 화면 <span class="device">Desktop</span></div>
+      <div class="wire-body">
+        <div class="m-card">
+          <h4>💳 결제 내역 — 김*수 님</h4>
+          <div style="display:flex;gap:8px;margin-bottom:12px">
+            <div class="m-btn m-btn-outline" style="font-size:10px">📋 이전 견적 불러오기</div>
+            <div class="m-input select" style="width:180px;font-size:10px;margin-bottom:0">견적기간변경 ▾</div>
+          </div>
+          <div class="mock-row">
+            <div class="mock-col">
+              <div style="font-size:12px;font-weight:600;margin-bottom:6px;color:var(--blue-dk)">📦 제품 (자산)</div>
+              <table class="m-table">
+                <thead><tr><th>#</th><th>제품명</th><th>수량</th><th>금액</th></tr></thead>
+                <tbody>
+                  <tr><td>1</td><td style="font-size:10px">i7-13700K</td><td>1</td><td style="font-size:10px">매입가 연동</td></tr>
+                  <tr><td>2</td><td style="font-size:10px">메인보드 B760M</td><td>1</td><td style="font-size:10px">매입가 연동</td></tr>
+                  <tr><td>3</td><td style="font-size:10px">모니터 27"</td><td>2</td><td style="font-size:10px">매입가 연동</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mock-col">
+              <div style="font-size:12px;font-weight:600;margin-bottom:6px;color:var(--teal-dk)">🔧 서비스</div>
+              <table class="m-table">
+                <thead><tr><th>#</th><th>항목</th><th>금액</th></tr></thead>
+                <tbody>
+                  <tr><td>1</td><td style="font-size:10px">컴퓨터 세팅</td><td style="font-size:10px">자동 계산</td></tr>
+                  <tr><td>2</td><td style="font-size:10px">조립비</td><td style="font-size:10px">자동 계산</td></tr>
+                  <tr><td>3</td><td style="font-size:10px">서울 출장비</td><td style="font-size:10px">자동 계산</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div style="text-align:right;font-size:14px;font-weight:700;margin-top:8px;padding-top:8px;border-top:2px solid var(--text)">
+            합계: 5,520,000원
+          </div>
+        </div>
+        <div class="m-card" style="margin-top:12px">
+          <h4>예약 및 결제</h4>
+          <div class="mock-row">
+            <div class="mock-col">
+              <div class="m-label">방문 기술자</div><div class="m-input select">담당자 선택 ▾</div>
+              <div class="m-label">예약일</div><div class="m-input">2026-03-20 14:00 ~ 18:00</div>
+            </div>
+            <div class="mock-col">
+              <div class="m-label">결제 방법</div>
+              <div style="display:flex;gap:8px;margin:6px 0">
+                <div class="m-btn m-btn-primary" style="flex:1;text-align:center;font-size:11px">📱 페이앱 결제 요청</div>
+                <div class="m-btn m-btn-outline" style="flex:1;text-align:center;font-size:11px">현금/계좌이체</div>
+              </div>
+              <div style="font-size:10px;color:var(--hint);margin-top:4px">페이앱: 고객에게 결제 링크 자동 발송 → 결제 완료 시 자동 기록</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. 재고/ERP -->
+  <div class="section" id="s12">
+    <div class="section-head"><div class="snum" style="background:var(--coral)">12</div><h2>재고/ERP</h2></div>
+    <div class="section-desc">재고 현황, 입출고 이력, 발주 관리, 비용 정산을 통합 관리.</div>
+    <div class="wire">
+      <div class="wire-title">재고 관리 화면 <span class="device">Desktop</span></div>
+      <div class="wire-body">
+        <div class="m-tab" style="margin-bottom:14px"><span class="active">재고 현황</span><span>입출고 이력</span><span>발주 관리</span><span>비용 정산</span></div>
+        <div style="display:flex;gap:8px;margin-bottom:12px">
+          <div class="m-input" style="flex:1;margin-bottom:0;font-size:11px">🔍 제품명 / SKU 검색</div>
+          <div class="m-input select" style="width:120px;margin-bottom:0;font-size:10px">카테고리 ▾</div>
+          <div class="m-btn m-btn-primary" style="font-size:10px">+ 제품 등록</div>
+        </div>
+        <table class="m-table">
+          <thead><tr><th>SKU</th><th>제품명</th><th>카테고리</th><th>현재고</th><th>안전재고</th><th>상태</th><th>매입가</th><th>판매가</th></tr></thead>
+          <tbody>
+            <tr><td style="font-size:10px">MON-27A</td><td>모니터 27"</td><td>모니터</td><td><strong style="color:#E24B4A">2</strong></td><td>5</td><td><span class="m-badge" style="background:#FCEBEB;color:#791F1F">부족</span></td><td style="font-size:10px">280,000</td><td style="font-size:10px">350,000</td></tr>
+            <tr><td style="font-size:10px">HDM-2M</td><td>HDMI 케이블 2M</td><td>케이블</td><td><strong style="color:var(--amber)">5</strong></td><td>10</td><td><span class="m-badge" style="background:var(--amber-bg);color:var(--amber-dk)">주의</span></td><td style="font-size:10px">8,000</td><td style="font-size:10px">15,000</td></tr>
+            <tr><td style="font-size:10px">CAM-920</td><td>웹캠 C920</td><td>카메라</td><td>12</td><td>5</td><td><span class="m-badge" style="background:var(--teal-bg);color:var(--teal-dk)">정상</span></td><td style="font-size:10px">65,000</td><td style="font-size:10px">89,000</td></tr>
+            <tr><td style="font-size:10px">MIC-AT</td><td>AT2020 마이크</td><td>음향</td><td>8</td><td>3</td><td><span class="m-badge" style="background:var(--teal-bg);color:var(--teal-dk)">정상</span></td><td style="font-size:10px">120,000</td><td style="font-size:10px">169,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13. 통계 -->
+  <div class="section" id="s13">
+    <div class="section-head"><div class="snum" style="background:var(--purple)">13</div><h2>통계/리포트</h2></div>
+    <div class="section-desc">매출 통계, 상담 전환율, 파이프라인 현황 등 경영 핵심 지표.</div>
+    <div class="wire">
+      <div class="wire-title">통계 대시보드 <span class="device">Desktop</span></div>
+      <div class="wire-body">
+        <div class="m-tab" style="margin-bottom:14px"><span class="active">매출 통계</span><span>상담 전환</span><span>파이프라인</span><span>기간 분석</span></div>
+        <div style="display:flex;gap:8px;margin-bottom:14px">
+          <div class="m-input select" style="width:120px;margin-bottom:0;font-size:10px">2026년 ▾</div>
+          <div class="m-input select" style="width:100px;margin-bottom:0;font-size:10px">3월 ▾</div>
+          <div class="m-btn m-btn-outline" style="font-size:10px">📥 엑셀 다운로드</div>
+        </div>
+        <div class="mock-row">
+          <div class="mock-col"><div class="m-card"><div class="m-stat"><div class="val" style="color:var(--green)">₩12.8M</div><div class="label">세팅비 매출</div></div></div></div>
+          <div class="mock-col"><div class="m-card"><div class="m-stat"><div class="val" style="color:var(--blue)">₩8.4M</div><div class="label">제품 판매 매출</div></div></div></div>
+          <div class="mock-col"><div class="m-card"><div class="m-stat"><div class="val" style="color:var(--purple)">₩21.2M</div><div class="label">총 매출</div></div></div></div>
+          <div class="mock-col"><div class="m-card"><div class="m-stat"><div class="val" style="color:var(--coral)">₩6.1M</div><div class="label">총 비용</div></div></div></div>
+        </div>
+        <div class="m-card">
+          <h4>📈 월별 매출 추이</h4>
+          <div class="m-placeholder" style="min-height:120px">차트 영역 (Bar/Line Chart)<br><span style="font-size:10px">세팅비 / 제품 판매비 / 총매출 월별 추이</span></div>
+        </div>
+        <div class="mock-row" style="margin-top:12px">
+          <div class="mock-col">
+            <div class="m-card">
+              <h4>📊 상담 전환 퍼널</h4>
+              <div style="font-size:11px;line-height:2.2">
+                <div style="display:flex;justify-content:space-between"><span>총 상담</span><strong>142건</strong></div>
+                <div style="background:var(--blue);height:4px;border-radius:2px;width:100%;margin-bottom:4px"></div>
+                <div style="display:flex;justify-content:space-between"><span>견적 발송</span><strong>98건 (69%)</strong></div>
+                <div style="background:var(--teal);height:4px;border-radius:2px;width:69%;margin-bottom:4px"></div>
+                <div style="display:flex;justify-content:space-between"><span>결제 완료</span><strong>71건 (50%)</strong></div>
+                <div style="background:var(--green);height:4px;border-radius:2px;width:50%;margin-bottom:4px"></div>
+                <div style="display:flex;justify-content:space-between"><span>세팅 완료</span><strong>65건 (46%)</strong></div>
+                <div style="background:var(--amber);height:4px;border-radius:2px;width:46%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="mock-col">
+            <div class="m-card">
+              <h4>⏱️ 평균 소요 기간</h4>
+              <table class="m-table">
+                <tr><td>상담 → 견적</td><td style="text-align:right"><strong>1.2일</strong></td></tr>
+                <tr><td>견적 → 결제</td><td style="text-align:right"><strong>3.5일</strong></td></tr>
+                <tr><td>결제 → 방문</td><td style="text-align:right"><strong>4.1일</strong></td></tr>
+                <tr><td>전체 프로세스</td><td style="text-align:right"><strong style="color:var(--blue)">8.8일</strong></td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14. 알림 센터 -->
+  <div class="section" id="s14">
+    <div class="section-head"><div class="snum" style="background:#555">14</div><h2>알림 센터</h2></div>
+    <div class="section-desc">웹 푸시 알림 + 채널톡 연동. 알림 이력 확인 및 설정 관리.</div>
+    <div class="wire">
+      <div class="wire-title">알림 센터 <span class="device">Desktop / Mobile 공용</span></div>
+      <div class="wire-body">
+        <div class="m-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <h4 style="margin-bottom:0">🔔 알림</h4>
+            <div class="m-btn m-btn-outline" style="font-size:10px">모두 읽음 처리</div>
+          </div>
+          <div style="border:1px solid #eee;border-radius:8px;overflow:hidden">
+            <div style="padding:10px 12px;border-bottom:1px solid #eee;background:var(--blue-bg)">
+              <div style="display:flex;justify-content:space-between;font-size:11px"><strong style="color:var(--blue-dk)">📅 일정 알림</strong><span style="color:var(--hint);font-size:10px">2분 전</span></div>
+              <div style="font-size:11px;color:var(--sub);margin-top:2px">내일 10:00 김*수 님 방문 세팅 예정</div>
+            </div>
+            <div style="padding:10px 12px;border-bottom:1px solid #eee;background:var(--coral-bg)">
+              <div style="display:flex;justify-content:space-between;font-size:11px"><strong style="color:var(--coral-dk)">📦 재고 알림</strong><span style="color:var(--hint);font-size:10px">1시간 전</span></div>
+              <div style="font-size:11px;color:var(--sub);margin-top:2px">모니터암 (27") 안전재고 미달 — 현재 2개</div>
+            </div>
+            <div style="padding:10px 12px;border-bottom:1px solid #eee">
+              <div style="display:flex;justify-content:space-between;font-size:11px"><strong>💳 결제 알림</strong><span style="color:var(--hint);font-size:10px">3시간 전</span></div>
+              <div style="font-size:11px;color:var(--sub);margin-top:2px">이*영 님 페이앱 결제 완료 — ₩3,250,000</div>
+            </div>
+            <div style="padding:10px 12px">
+              <div style="display:flex;justify-content:space-between;font-size:11px"><strong>🔄 AS 알림</strong><span style="color:var(--hint);font-size:10px">어제</span></div>
+              <div style="font-size:11px;color:var(--sub);margin-top:2px">박*진 님 AS 기간 만료 예정 (D-2)</div>
+            </div>
+          </div>
+        </div>
+        <div class="m-card" style="margin-top:12px">
+          <h4>⚙️ 알림 설정</h4>
+          <div class="m-toggle"><div class="track"><div class="thumb"></div></div>웹 푸시 알림</div>
+          <div class="m-toggle"><div class="track"><div class="thumb"></div></div>채널톡 연동 알림</div>
+          <div class="m-toggle"><div class="track"><div class="thumb"></div></div>일정 리마인드 (1일 전)</div>
+          <div class="m-toggle"><div class="track"><div class="thumb"></div></div>재고 부족 알림</div>
+          <div class="m-toggle"><div class="track"><div class="thumb"></div></div>결제 완료 알림</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    닥터고블린컴퍼니 · CRM 화면 설계서 v1.0<br>
+    총 14개 화면 · 문의사항은 개발팀에 연락해주세요
+  </div>
+</div>
+
+</body>
+</html>
