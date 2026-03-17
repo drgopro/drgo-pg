@@ -338,7 +338,7 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
   <div class="section-title">개발 로드맵</div>
   <div class="section-desc">4단계 페이즈로 나눠 점진적으로 개발합니다. Phase 1(MVP)부터 실사용 가능한 상태로 배포하고, 이후 기능을 확장합니다.</div>
 
-  <div class="acc-header" id="acc-phase1" onclick="toggleAcc('acc-phase1')"><span>🟢 Phase 1 — MVP 핵심 기반 (약 6~8주)</span><span class="arrow">▼</span></div>
+  <div class="acc-header" id="acc-phase1" onclick="togglePhase('acc-phase1')"><span>🟢 Phase 1 — MVP 핵심 기반 (약 6~8주)</span><span class="arrow">▼</span></div>
   <div class="acc-body" id="acc-phase1-body">
     <div style="font-size:13px;color:var(--sub);line-height:1.8;margin-bottom:14px"><strong style="color:var(--text)">목표: CRM의 뼈대를 세우고, 당장 업무에 쓸 수 있는 최소 기능 배포.</strong><br>의뢰자 등록 → 프로젝트 생성 → 상담 기록 → 캘린더 확인까지의 핵심 루프를 완성합니다.</div>
     <table class="perm-table">
@@ -355,7 +355,7 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
     <div style="background:var(--green-bg);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--green-dark);margin-top:12px"><strong>Phase 1 완료 시점의 상태:</strong> 사원들이 로그인하여 의뢰자를 등록하고, 프로젝트를 생성하고, 상담 이력을 기록하고, 캘린더로 일정을 관리할 수 있는 상태. 이 시점부터 실무에서 사용 시작.</div>
   </div>
 
-  <div class="acc-header" id="acc-phase2" onclick="toggleAcc('acc-phase2')"><span>🔵 Phase 2 — 현장 운영 기능 (약 6~8주)</span><span class="arrow">▼</span></div>
+  <div class="acc-header" id="acc-phase2" onclick="togglePhase('acc-phase2')"><span>🔵 Phase 2 — 현장 운영 기능 (약 6~8주)</span><span class="arrow">▼</span></div>
   <div class="acc-body" id="acc-phase2-body">
     <div style="font-size:13px;color:var(--sub);line-height:1.8;margin-bottom:14px"><strong style="color:var(--text)">목표: 프로세스 전 단계를 구현하고, 현장 기술자가 모바일로 업무 처리 가능.</strong><br>견적 → 결제 → 세팅 → 보고서 → AS까지 전체 라이프사이클을 완성합니다.</div>
     <table class="perm-table">
@@ -372,7 +372,7 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
     <div style="background:var(--blue-bg);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--blue-dark);margin-top:12px"><strong>Phase 2 완료 시점의 상태:</strong> 상담부터 AS까지 전체 프로세스가 동작. 기술자가 스마트폰(PWA)으로 현장에서 세팅 체크/촬영/보고서 작성 가능. 페이앱으로 현장 결제까지 처리.</div>
   </div>
 
-  <div class="acc-header" id="acc-phase3" onclick="toggleAcc('acc-phase3')"><span>🟣 Phase 3 — 경영 관리 · 연동 (약 5~7주)</span><span class="arrow">▼</span></div>
+  <div class="acc-header" id="acc-phase3" onclick="togglePhase('acc-phase3')"><span>🟣 Phase 3 — 경영 관리 · 연동 (약 5~7주)</span><span class="arrow">▼</span></div>
   <div class="acc-body" id="acc-phase3-body">
     <div style="font-size:13px;color:var(--sub);line-height:1.8;margin-bottom:14px"><strong style="color:var(--text)">목표: 재고/ERP, 통계, 외부 연동을 추가하여 경영 관리 도구로 확장.</strong><br>데이터가 쌓인 상태에서 분석과 자동화를 붙입니다.</div>
     <table class="perm-table">
@@ -388,7 +388,7 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
     <div style="background:var(--purple-bg);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--purple-dark);margin-top:12px"><strong>Phase 3 완료 시점의 상태:</strong> 재고/발주/비용까지 통합 관리. 경영진이 통계 대시보드로 매출·전환율·파이프라인을 실시간 파악. 홈페이지 견적도 CRM으로 흡수.</div>
   </div>
 
-  <div class="acc-header" id="acc-phase4" onclick="toggleAcc('acc-phase4')"><span>⚪ Phase 4 — 고도화 · 자동화 (이후 지속)</span><span class="arrow">▼</span></div>
+  <div class="acc-header" id="acc-phase4" onclick="togglePhase('acc-phase4')"><span>⚪ Phase 4 — 고도화 · 자동화 (이후 지속)</span><span class="arrow">▼</span></div>
   <div class="acc-body" id="acc-phase4-body">
     <div style="font-size:13px;color:var(--sub);line-height:1.8;margin-bottom:14px"><strong style="color:var(--text)">목표: AI 자동화, 고급 연동, UX 고도화로 업무 효율 극대화.</strong><br>Phase 1~3의 운영 피드백을 반영하여 지속적으로 개선합니다.</div>
     <table class="perm-table">
@@ -464,9 +464,16 @@ function toggleAcc(id){
   var b=document.getElementById(id+'-body');
   if(!h||!b)return;
   var isOpen=h.classList.contains('open');
-  document.querySelectorAll('.acc-header').forEach(function(el){el.classList.remove('open')});
-  document.querySelectorAll('.acc-body').forEach(function(el){el.classList.remove('show')});
+  document.querySelectorAll('.acc-header').forEach(function(el){if(!el.id.startsWith('acc-phase'))el.classList.remove('open')});
+  document.querySelectorAll('.acc-body').forEach(function(el){if(!el.id.startsWith('acc-phase'))el.classList.remove('show')});
   if(!isOpen){h.classList.add('open');b.classList.add('show')}
+}
+function togglePhase(id){
+  var h=document.getElementById(id);
+  var b=document.getElementById(id+'-body');
+  if(!h||!b)return;
+  h.classList.toggle('open');
+  b.classList.toggle('show');
 }
 </script>
 </body>
