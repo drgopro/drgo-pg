@@ -112,6 +112,7 @@ body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);
       <div class="toc-item" onclick="document.getElementById('s3m').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--teal)">03-M</div>캘린더 (기술자 모바일)</div>
       <div class="toc-item" onclick="document.getElementById('s4').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--teal)">04</div>캘린더 (의뢰자용)</div>
       <div class="toc-item" onclick="document.getElementById('s5').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--coral)">05</div>의뢰인 등록/수정</div>
+      <div class="toc-item" onclick="document.getElementById('s5p').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--purple)">05-P</div>프로젝트 생성/관리</div>
       <div class="toc-item" onclick="document.getElementById('s6').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--coral)">06</div>의뢰인 이력 조회</div>
       <div class="toc-item" onclick="document.getElementById('s7').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--amber)">07</div>상담 이력 작성</div>
       <div class="toc-item" onclick="document.getElementById('s8').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--green)">08</div>방문 세팅 (모바일)</div>
@@ -990,6 +991,209 @@ body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);
     </div>
   </div>
 
+  <!-- 05-P. 프로젝트 생성/관리 -->
+  <div class="section" id="s5p">
+    <div class="section-head"><div class="snum" style="background:var(--purple)">05-P</div><h2>프로젝트 생성/관리</h2></div>
+    <div class="section-desc">의뢰자 상세 페이지에서 프로젝트를 생성하고, 진행 상태를 관리합니다. 1의뢰자 = N프로젝트 구조.</div>
+
+    <!-- 의뢰자 상세 + 프로젝트 목록 -->
+    <div class="wire">
+      <div class="wire-title">의뢰자 상세 — 프로젝트 목록 <span class="device">Desktop</span></div>
+      <div class="wire-body">
+        <div class="mock">
+          <div class="mock-topbar"><div class="logo">🟢 닥터고블린 CRM</div><div class="user">이상흠 (관리자) ▾</div></div>
+          <div class="mock-nav"><a>대시보드</a><a>캘린더</a><a class="active">의뢰인</a><a>상담</a><a>세팅</a><a>결제</a><a>재고</a><a>통계</a><a>알림</a></div>
+          <div class="mock-content">
+            <!-- 의뢰자 헤더 -->
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+              <div style="display:flex;gap:12px;align-items:center">
+                <div style="width:48px;height:48px;border-radius:50%;background:var(--purple-bg);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--purple-dk)">김</div>
+                <div>
+                  <div style="font-size:16px;font-weight:700">김누구 <span style="font-weight:400;color:var(--sub);font-size:13px">(누구세촌)</span></div>
+                  <div style="font-size:11px;color:var(--hint)">유튜브 · 트위치 · 게임 · 노래 &nbsp;|&nbsp; <span class="m-badge" style="background:var(--amber-bg);color:var(--amber-dk)">VIP</span></div>
+                </div>
+              </div>
+              <div class="m-btn m-btn-primary" style="font-size:11px">+ 새 프로젝트</div>
+            </div>
+            <!-- 프로젝트 카드 목록 -->
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <!-- 프로젝트 1: 진행중 -->
+              <div style="border:1px solid var(--blue);border-radius:10px;overflow:hidden;cursor:pointer">
+                <div style="background:var(--blue-bg);padding:10px 14px;display:flex;justify-content:space-between;align-items:center">
+                  <div>
+                    <span class="m-badge" style="background:var(--blue);color:#fff;margin-right:4px">진행중</span>
+                    <strong style="font-size:13px">방송룸 풀세팅</strong>
+                  </div>
+                  <span style="font-size:10px;color:var(--hint)">2026.03.10 ~</span>
+                </div>
+                <div style="padding:10px 14px;background:#fff">
+                  <div class="m-flow" style="margin:0">
+                    <div class="step" style="background:var(--teal);font-size:9px;padding:3px 7px">상담 ✓</div><div class="arr">→</div>
+                    <div class="step" style="background:var(--teal);font-size:9px;padding:3px 7px">장비파악 ✓</div><div class="arr">→</div>
+                    <div class="step" style="background:var(--teal);font-size:9px;padding:3px 7px">일정제안 ✓</div><div class="arr">→</div>
+                    <div class="step" style="background:var(--blue);font-size:9px;padding:3px 7px;border:2px solid var(--blue-dk)">견적/계약</div><div class="arr">→</div>
+                    <div class="step" style="background:var(--gray-bg);color:var(--hint);font-size:9px;padding:3px 7px">결제/예약</div><div class="arr">→</div>
+                    <div class="step" style="background:var(--gray-bg);color:var(--hint);font-size:9px;padding:3px 7px">세팅</div><div class="arr">→</div>
+                    <div class="step" style="background:var(--gray-bg);color:var(--hint);font-size:9px;padding:3px 7px">AS</div>
+                  </div>
+                  <div style="font-size:10px;color:var(--sub);margin-top:6px">현재 단계: <strong style="color:var(--blue-dk)">견적/계약</strong> &nbsp;|&nbsp; 담당: 이상흠 &nbsp;|&nbsp; 예상 금액: ₩3,250,000</div>
+                </div>
+              </div>
+              <!-- 프로젝트 2: AS 진행중 -->
+              <div style="border:1px solid var(--coral);border-radius:10px;overflow:hidden;cursor:pointer">
+                <div style="background:var(--coral-bg);padding:10px 14px;display:flex;justify-content:space-between;align-items:center">
+                  <div>
+                    <span class="m-badge" style="background:var(--coral);color:#fff;margin-right:4px">AS</span>
+                    <strong style="font-size:13px">모니터 교체 AS</strong>
+                  </div>
+                  <span style="font-size:10px;color:var(--hint)">2026.03.15 ~</span>
+                </div>
+                <div style="padding:10px 14px;background:#fff">
+                  <div class="m-flow" style="margin:0">
+                    <div class="step" style="background:var(--teal);font-size:9px;padding:3px 7px">상담 ✓</div><div class="arr">→</div>
+                    <div class="step" style="background:var(--teal);font-size:9px;padding:3px 7px">장비파악 ✓</div><div class="arr">→</div>
+                    <div class="step" style="background:var(--teal);font-size:9px;padding:3px 7px">일정제안 ✓</div><div class="arr">→</div>
+                    <div class="step" style="background:var(--teal);font-size:9px;padding:3px 7px">견적 ✓</div><div class="arr">→</div>
+                    <div class="step" style="background:var(--teal);font-size:9px;padding:3px 7px">결제 ✓</div><div class="arr">→</div>
+                    <div class="step" style="background:var(--coral);font-size:9px;padding:3px 7px;border:2px solid var(--coral-dk)">방문</div><div class="arr">→</div>
+                    <div class="step" style="background:var(--gray-bg);color:var(--hint);font-size:9px;padding:3px 7px">AS</div>
+                  </div>
+                  <div style="font-size:10px;color:var(--sub);margin-top:6px">현재 단계: <strong style="color:var(--coral-dk)">방문 세팅</strong> &nbsp;|&nbsp; 담당: 이민종 &nbsp;|&nbsp; 방문일: 3/18</div>
+                </div>
+              </div>
+              <!-- 프로젝트 3: 완료 -->
+              <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;opacity:.7">
+                <div style="background:var(--gray-bg);padding:10px 14px;display:flex;justify-content:space-between;align-items:center">
+                  <div>
+                    <span class="m-badge" style="background:var(--hint);color:#fff;margin-right:4px">완료</span>
+                    <strong style="font-size:13px;color:var(--sub)">조명 추가 설치</strong>
+                  </div>
+                  <span style="font-size:10px;color:var(--hint)">2026.01.05 ~ 2026.01.28</span>
+                </div>
+                <div style="padding:10px 14px;background:#fff">
+                  <div style="font-size:10px;color:var(--hint)">전 단계 완료 &nbsp;|&nbsp; 담당: 이상흠 &nbsp;|&nbsp; 최종 금액: ₩850,000</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 프로젝트 생성 모달 -->
+    <div class="wire" style="margin-top:16px">
+      <div class="wire-title">새 프로젝트 생성 <span class="device">Desktop — 모달</span></div>
+      <div class="wire-body" style="display:flex;justify-content:center">
+        <div style="width:420px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;box-shadow:0 8px 30px rgba(0,0,0,.08)">
+          <h4 style="font-size:16px;margin-bottom:16px">새 프로젝트 생성</h4>
+          <div style="background:var(--gray-bg);border-radius:8px;padding:10px 12px;margin-bottom:14px;display:flex;align-items:center;gap:8px">
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--purple-bg);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--purple-dk)">김</div>
+            <div><div style="font-size:12px;font-weight:600">김누구 (누구세촌)</div><div style="font-size:10px;color:var(--hint)">진행중 프로젝트 2건</div></div>
+          </div>
+          <div class="m-label">프로젝트명 *</div>
+          <div class="m-input" style="border-color:var(--purple);font-size:13px">OO님 방송룸 풀세팅</div>
+          <div style="font-size:10px;color:var(--hint);margin-top:2px;margin-bottom:10px">의뢰 내용을 알기 쉽게 입력해주세요</div>
+          <div class="m-label">프로젝트 유형</div>
+          <div style="display:flex;gap:8px;margin:6px 0 12px">
+            <div style="flex:1;text-align:center;padding:10px;border-radius:8px;border:2px solid var(--blue);background:var(--blue-bg);font-size:11px;font-weight:600;color:var(--blue-dk)">🏠 방문 세팅</div>
+            <div style="flex:1;text-align:center;padding:10px;border-radius:8px;border:1px solid var(--border);font-size:11px;color:var(--sub)">🖥️ 원격 세팅</div>
+            <div style="flex:1;text-align:center;padding:10px;border-radius:8px;border:1px solid var(--border);font-size:11px;color:var(--sub)">🔧 AS</div>
+          </div>
+          <div class="m-label">담당자</div>
+          <div class="m-input select">이상흠 (관리자) ▾</div>
+          <div class="m-label">메모 (선택)</div>
+          <div class="m-input" style="height:48px;font-size:11px;color:var(--hint)">프로젝트 관련 초기 메모</div>
+          <div style="display:flex;gap:8px;margin-top:16px;justify-content:flex-end">
+            <div class="m-btn m-btn-outline">취소</div>
+            <div class="m-btn m-btn-primary">프로젝트 생성 → 상담 단계 시작</div>
+          </div>
+          <div style="font-size:10px;color:var(--hint);margin-top:8px;text-align:center">생성 즉시 '상담' 단계가 활성화됩니다. 이후 단계는 순차적으로 진행됩니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 프로젝트 상세 (프로세스 바 + 단계 관리) -->
+    <div class="wire" style="margin-top:16px">
+      <div class="wire-title">프로젝트 상세 — 프로세스 바 + 단계 관리 <span class="device">Desktop</span></div>
+      <div class="wire-body">
+        <div class="mock">
+          <div class="mock-topbar"><div class="logo">🟢 닥터고블린 CRM</div><div class="user">이상흠 (관리자) ▾</div></div>
+          <div class="mock-content">
+            <!-- 프로젝트 헤더 -->
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <div>
+                <div style="font-size:11px;color:var(--hint)">김누구 (누구세촌) ▸ 프로젝트</div>
+                <div style="font-size:18px;font-weight:700">방송룸 풀세팅 <span class="m-badge" style="background:var(--blue);color:#fff;font-size:10px;vertical-align:middle">진행중</span></div>
+              </div>
+              <div style="display:flex;gap:6px">
+                <div class="m-btn m-btn-outline" style="font-size:10px">수정</div>
+                <div class="m-btn m-btn-danger" style="font-size:10px">프로젝트 취소</div>
+              </div>
+            </div>
+            <div style="font-size:11px;color:var(--hint);margin-bottom:14px">시작일: 2026.03.10 &nbsp;|&nbsp; 담당: 이상흠 &nbsp;|&nbsp; 현재 단계: 견적/계약</div>
+
+            <!-- 프로세스 바 -->
+            <div style="display:flex;gap:2px;margin:16px 0;align-items:center">
+              <div style="flex:1;text-align:center;padding:10px 4px;border-radius:8px;background:var(--teal);color:#fff;font-size:10px;font-weight:600;position:relative">✓ 상담<div style="font-size:8px;font-weight:400;margin-top:1px">3/10 완료</div></div>
+              <div style="color:var(--teal);font-size:10px">▸</div>
+              <div style="flex:1;text-align:center;padding:10px 4px;border-radius:8px;background:var(--teal);color:#fff;font-size:10px;font-weight:600">✓ 장비파악<div style="font-size:8px;font-weight:400;margin-top:1px">3/11 완료</div></div>
+              <div style="color:var(--teal);font-size:10px">▸</div>
+              <div style="flex:1;text-align:center;padding:10px 4px;border-radius:8px;background:var(--teal);color:#fff;font-size:10px;font-weight:600">✓ 일정제안<div style="font-size:8px;font-weight:400;margin-top:1px">3/12 완료</div></div>
+              <div style="color:var(--blue);font-size:10px">▸</div>
+              <div style="flex:1;text-align:center;padding:10px 4px;border-radius:8px;background:var(--blue);color:#fff;font-size:10px;font-weight:600;border:2px solid var(--blue-dk);box-shadow:0 2px 8px rgba(55,138,221,.3)">● 견적/계약<div style="font-size:8px;font-weight:400;margin-top:1px">진행중</div></div>
+              <div style="color:var(--hint);font-size:10px">▸</div>
+              <div style="flex:1;text-align:center;padding:10px 4px;border-radius:8px;background:var(--gray-bg);color:var(--hint);font-size:10px;font-weight:500">결제/예약<div style="font-size:8px;margin-top:1px">🔒 잠김</div></div>
+              <div style="color:var(--hint);font-size:10px">▸</div>
+              <div style="flex:1;text-align:center;padding:10px 4px;border-radius:8px;background:var(--gray-bg);color:var(--hint);font-size:10px;font-weight:500">세팅<div style="font-size:8px;margin-top:1px">🔒 잠김</div></div>
+              <div style="color:var(--hint);font-size:10px">▸</div>
+              <div style="flex:1;text-align:center;padding:10px 4px;border-radius:8px;background:var(--gray-bg);color:var(--hint);font-size:10px;font-weight:500">AS<div style="font-size:8px;margin-top:1px">🔒 잠김</div></div>
+            </div>
+
+            <!-- 현재 단계 상세 영역 -->
+            <div class="m-card" style="border:2px solid var(--blue);margin-top:8px">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                <h4 style="margin-bottom:0;color:var(--blue-dk)">📋 현재 단계: 견적/계약</h4>
+                <div class="m-btn m-btn-primary" style="font-size:10px">견적서 작성</div>
+              </div>
+              <div style="font-size:11px;color:var(--sub);line-height:1.8">
+                이 단계에서는 장비 파악 결과를 기반으로 견적서를 작성하고 고객에게 전달합니다.<br>
+                견적서 작성 완료 후 고객 승인이 확인되면 <strong style="color:var(--blue-dk)">'견적 완료'</strong> 버튼을 눌러 다음 단계(결제/예약)를 활성화합니다.
+              </div>
+              <div style="margin-top:10px;display:flex;gap:8px">
+                <div class="m-btn m-btn-outline" style="font-size:10px">📄 견적서 미리보기</div>
+                <div class="m-btn m-btn-success" style="font-size:10px">✓ 견적 완료 → 다음 단계 활성화</div>
+              </div>
+            </div>
+
+            <!-- 이전 완료 단계 아코디언 -->
+            <div style="margin-top:14px">
+              <div style="background:var(--teal-bg);border-radius:8px;padding:10px 14px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;cursor:pointer">
+                <span style="font-size:12px;font-weight:600;color:var(--teal-dk)">✓ 상담 — 3/10 완료</span>
+                <span style="font-size:10px;color:var(--teal)">▼ 펼치기</span>
+              </div>
+              <div style="background:var(--teal-bg);border-radius:8px;padding:10px 14px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;cursor:pointer">
+                <span style="font-size:12px;font-weight:600;color:var(--teal-dk)">✓ 장비파악 — 3/11 완료</span>
+                <span style="font-size:10px;color:var(--teal)">▼ 펼치기</span>
+              </div>
+              <div style="background:var(--teal-bg);border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer">
+                <span style="font-size:12px;font-weight:600;color:var(--teal-dk)">✓ 일정제안 — 3/12 완료</span>
+                <span style="font-size:10px;color:var(--teal)">▼ 펼치기</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ul class="spec-list">
+      <li><strong>순차 진행 필수:</strong> 잠김(🔒) 상태인 단계는 이전 단계 완료 전까지 클릭/입력 불가</li>
+      <li><strong>단계 완료 버튼:</strong> 각 단계에 '완료 → 다음 단계 활성화' 버튼이 존재. 클릭 시 다음 단계 잠금 해제</li>
+      <li><strong>이전 단계 조회:</strong> 완료된 단계를 아코디언으로 펼쳐서 기록 확인 가능 (수정은 관리자만)</li>
+      <li><strong>동시 프로젝트:</strong> 의뢰자 상세 페이지에서 진행중/완료 프로젝트를 한눈에 확인</li>
+      <li><strong>프로젝트 유형:</strong> 방문 세팅 / 원격 세팅 / AS 중 선택. 유형에 따라 세팅 단계의 하위 프로세스가 분기</li>
+    </ul>
+  </div>
+
   <!-- 06. 이력 조회 -->
   <div class="section" id="s6">
     <div class="section-head"><div class="snum" style="background:var(--coral)">06</div><h2>의뢰인 이력 조회</h2></div>
@@ -1409,7 +1613,7 @@ body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);
 
   <div class="footer">
     닥터고블린컴퍼니 · CRM 화면 설계서 v1.0<br>
-    총 15개 화면 · 문의사항은 개발팀에 연락해주세요
+    총 16개 화면 · 문의사항은 개발팀에 연락해주세요
   </div>
 </div>
 
