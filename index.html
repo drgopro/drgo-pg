@@ -156,6 +156,36 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
     </div>
   </div>
 
+  <!-- 핵심 데이터 모델 -->
+  <div class="section-title">핵심 데이터 모델</div>
+  <div class="section-desc">의뢰자 → 프로젝트 → 단계별 이력의 3계층 구조입니다. 모든 업무는 프로젝트 단위로 관리됩니다.</div>
+
+  <div class="acc-header" id="acc-datamodel" onclick="toggleAcc('acc-datamodel')">
+    <span>🗂️ 의뢰자 · 프로젝트 · 이력 관계</span><span class="arrow">▼</span>
+  </div>
+  <div class="acc-body" id="acc-datamodel-body">
+    <div style="font-size:13px;color:var(--sub);line-height:1.8;margin-bottom:14px">
+      <strong style="color:var(--text)">의뢰자 1명 = 여러 프로젝트 보유 가능.</strong><br>
+      의뢰자 정보가 등록되면 DB에 의뢰자 레코드가 생성되고, 상담이 시작되는 시점에 해당 의뢰자를 참조하는 프로젝트가 1건 생성됩니다. 이후 모든 진행 이력은 해당 프로젝트 하위에 순차적으로 등록됩니다.
+    </div>
+    <div style="display:flex;gap:4px 2px;align-items:center;flex-wrap:wrap;margin:16px 0">
+      <div style="background:var(--blue);color:#fff;padding:10px 14px;border-radius:10px;font-size:12px;font-weight:600;text-align:center;min-width:80px">의뢰자 등록<br><span style="font-weight:400;font-size:10px">고객 DB 생성</span></div>
+      <div style="color:var(--hint);font-size:16px;padding:0 2px">→</div>
+      <div style="background:var(--purple);color:#fff;padding:10px 14px;border-radius:10px;font-size:12px;font-weight:600;text-align:center;min-width:100px">프로젝트 생성<br><span style="font-weight:400;font-size:10px">프로젝트명 직접 입력</span></div>
+      <div style="color:var(--hint);font-size:16px;padding:0 2px">→</div>
+      <div style="background:var(--teal);color:#fff;padding:10px 14px;border-radius:10px;font-size:12px;font-weight:600;text-align:center;min-width:100px">단계별 이력 등록<br><span style="font-weight:400;font-size:10px">순차 진행 (필수)</span></div>
+    </div>
+    <div class="screen-list">
+      <div class="screen-item"><div class="num tag" style="background:var(--blue-bg);color:var(--blue-dk)">구조</div><h4>의뢰자 1 : N 프로젝트</h4><p>한 의뢰자가 여러 프로젝트를 동시에 보유 가능. 예: '방송룸 풀세팅' 진행 중에 별도 'AS 모니터 교체' 프로젝트가 병행될 수 있음.</p></div>
+      <div class="screen-item"><div class="num tag" style="background:var(--purple-bg);color:var(--purple-dk)">이름</div><h4>프로젝트명 직접 입력</h4><p>상담사가 프로젝트 생성 시 직접 이름을 지정. 예: 'OO님 방송룸 풀세팅', 'OO님 조명 추가 설치'. 직관적인 식별과 검색이 가능.</p></div>
+      <div class="screen-item"><div class="num tag" style="background:var(--coral-bg);color:var(--coral-dk)">순서</div><h4>단계별 순차 진행 필수</h4><p>상담 → 장비파악 → 일정제안 → 견적/계약 → 결제/예약 → 방문(또는 원격) → AS 순서로만 진행 가능. 이전 단계 완료 후 다음 단계 활성화.</p></div>
+      <div class="screen-item"><div class="num tag" style="background:var(--teal-bg);color:var(--teal-dk)">이력</div><h4>프로젝트 내 모든 이력 통합</h4><p>프로젝트에 속한 상담 메모, 견적서, 결제 내역, 세팅 보고서, AS 기록이 하나의 타임라인에 통합 관리. 프로젝트 단위로 매출/비용 집계.</p></div>
+    </div>
+    <div style="background:var(--purple-bg);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--purple-dk);margin-top:12px">
+      <strong>데이터 예시:</strong> 의뢰자 '김누구(누구세촌)' → 프로젝트 ① '방송룸 풀세팅' (진행중, 현재 결제/예약 단계) + 프로젝트 ② '모니터 추가 설치' (완료) + 프로젝트 ③ '조명 AS' (AS 진행중)
+    </div>
+  </div>
+
   <!-- 프로세스 바 라이프사이클 -->
   <div class="section-title">프로세스 바 라이프사이클</div>
   <div class="section-desc">고객 의뢰 1건 = 프로젝트 1건. 각 단계마다 이력이 자동 기록됩니다.</div>
