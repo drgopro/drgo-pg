@@ -335,6 +335,102 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;backgr
     <div style="background:var(--amber-bg);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--amber-dark);margin-top:12px"><strong>참고:</strong> 가맹점 등록 및 API 키 발급이 선행되어야 합니다. 정확한 API 스펙은 페이앱 공식 문서에서 확인해 주세요.</div>
   </div>
 
+  <div class="section-title">개발 로드맵</div>
+  <div class="section-desc">4단계 페이즈로 나눠 점진적으로 개발합니다. Phase 1(MVP)부터 실사용 가능한 상태로 배포하고, 이후 기능을 확장합니다.</div>
+
+  <div class="acc-header" id="acc-phase1" onclick="toggleAcc('acc-phase1')"><span>🟢 Phase 1 — MVP 핵심 기반 (약 6~8주)</span><span class="arrow">▼</span></div>
+  <div class="acc-body" id="acc-phase1-body">
+    <div style="font-size:13px;color:var(--sub);line-height:1.8;margin-bottom:14px"><strong style="color:var(--text)">목표: CRM의 뼈대를 세우고, 당장 업무에 쓸 수 있는 최소 기능 배포.</strong><br>의뢰자 등록 → 프로젝트 생성 → 상담 기록 → 캘린더 확인까지의 핵심 루프를 완성합니다.</div>
+    <table class="perm-table">
+      <thead><tr><th style="text-align:left">항목</th><th style="text-align:left">상세 내용</th><th>예상 기간</th></tr></thead>
+      <tbody>
+        <tr><td style="font-weight:600">인프라 셋업</td><td style="text-align:left;font-size:12px;color:var(--sub)">Laravel 11 + MySQL 8 설치, 호스팅 배포 환경 구성, Git 저장소 세팅, 기본 CI/CD</td><td style="font-size:12px">1주</td></tr>
+        <tr><td style="font-weight:600">로그인 · 권한</td><td style="text-align:left;font-size:12px;color:var(--sub)">개인 계정 로그인, 5단계 역할(마스터/관리자/세일즈/멤버/프리랜서) 기반 접근 제어, 비밀번호 변경</td><td style="font-size:12px">1주</td></tr>
+        <tr><td style="font-weight:600">의뢰자 관리</td><td style="text-align:left;font-size:12px;color:var(--sub)">의뢰자 CRUD (등록/검색/수정), 플랫폼·콘텐츠 다중 선택, 등급 분류, 기본 정보 필드</td><td style="font-size:12px">1.5주</td></tr>
+        <tr><td style="font-weight:600">프로젝트 관리</td><td style="text-align:left;font-size:12px;color:var(--sub)">프로젝트 생성(이름 직접 입력, 유형 선택), 의뢰자 1:N 프로젝트 구조, 프로세스 바 UI, 순차 단계 잠금/해제</td><td style="font-size:12px">2주</td></tr>
+        <tr><td style="font-weight:600">상담 이력</td><td style="text-align:left;font-size:12px;color:var(--sub)">상담 이력 작성 폼, 필드 자동 동기화(닉네임/상담일/상담사), 상태 라이브 연동, 프로젝트 내 상담 단계 완료 처리</td><td style="font-size:12px">1주</td></tr>
+        <tr><td style="font-weight:600">캘린더 (사내)</td><td style="text-align:left;font-size:12px;color:var(--sub)">월간/주간/일간 뷰, 일정 등록/수정/삭제, 담당자 필터, 유형별 색상 구분 (기존 Firebase 캘린더 마이그레이션)</td><td style="font-size:12px">1.5주</td></tr>
+      </tbody>
+    </table>
+    <div style="background:var(--green-bg);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--green-dark);margin-top:12px"><strong>Phase 1 완료 시점의 상태:</strong> 사원들이 로그인하여 의뢰자를 등록하고, 프로젝트를 생성하고, 상담 이력을 기록하고, 캘린더로 일정을 관리할 수 있는 상태. 이 시점부터 실무에서 사용 시작.</div>
+  </div>
+
+  <div class="acc-header" id="acc-phase2" onclick="toggleAcc('acc-phase2')"><span>🔵 Phase 2 — 현장 운영 기능 (약 6~8주)</span><span class="arrow">▼</span></div>
+  <div class="acc-body" id="acc-phase2-body">
+    <div style="font-size:13px;color:var(--sub);line-height:1.8;margin-bottom:14px"><strong style="color:var(--text)">목표: 프로세스 전 단계를 구현하고, 현장 기술자가 모바일로 업무 처리 가능.</strong><br>견적 → 결제 → 세팅 → 보고서 → AS까지 전체 라이프사이클을 완성합니다.</div>
+    <table class="perm-table">
+      <thead><tr><th style="text-align:left">항목</th><th style="text-align:left">상세 내용</th><th>예상 기간</th></tr></thead>
+      <tbody>
+        <tr><td style="font-weight:600">프로세스 전 단계</td><td style="text-align:left;font-size:12px;color:var(--sub)">장비파악, 일정제안, 견적/계약, 결제/예약 단계 폼 및 완료 처리 로직 구현. 각 단계 순차 잠금/해제 완성</td><td style="font-size:12px">2주</td></tr>
+        <tr><td style="font-weight:600">방문 세팅 (모바일)</td><td style="text-align:left;font-size:12px;color:var(--sub)">체크리스트 UI, 카메라 촬영, 보고서 작성, 방문 완료 처리, AS 2주 스케줄러 자동 활성화</td><td style="font-size:12px">1.5주</td></tr>
+        <tr><td style="font-weight:600">원격 세팅</td><td style="text-align:left;font-size:12px;color:var(--sub)">유료/무료 분기, 원격 비용 입력, 원격 보고서, 신규 세팅만 AS 조건부 적용</td><td style="font-size:12px">1주</td></tr>
+        <tr><td style="font-weight:600">PWA 적용</td><td style="text-align:left;font-size:12px;color:var(--sub)">manifest.json, service-worker.js 추가, 모바일 반응형 UI 최적화, 기술자 모바일 캘린더(월간/주간/일간)</td><td style="font-size:12px">1주</td></tr>
+        <tr><td style="font-weight:600">페이앱 결제 연동</td><td style="text-align:left;font-size:12px;color:var(--sub)">페이앱 API 연동, 결제 요청 → 링크 발송 → Webhook 수신 → 이력 자동 기록</td><td style="font-size:12px">1.5주</td></tr>
+        <tr><td style="font-weight:600">알림 기본</td><td style="text-align:left;font-size:12px;color:var(--sub)">웹 푸시 알림 기본 구현 (일정 리마인드, 결제 완료), 알림 센터 UI</td><td style="font-size:12px">1주</td></tr>
+      </tbody>
+    </table>
+    <div style="background:var(--blue-bg);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--blue-dark);margin-top:12px"><strong>Phase 2 완료 시점의 상태:</strong> 상담부터 AS까지 전체 프로세스가 동작. 기술자가 스마트폰(PWA)으로 현장에서 세팅 체크/촬영/보고서 작성 가능. 페이앱으로 현장 결제까지 처리.</div>
+  </div>
+
+  <div class="acc-header" id="acc-phase3" onclick="toggleAcc('acc-phase3')"><span>🟣 Phase 3 — 경영 관리 · 연동 (약 5~7주)</span><span class="arrow">▼</span></div>
+  <div class="acc-body" id="acc-phase3-body">
+    <div style="font-size:13px;color:var(--sub);line-height:1.8;margin-bottom:14px"><strong style="color:var(--text)">목표: 재고/ERP, 통계, 외부 연동을 추가하여 경영 관리 도구로 확장.</strong><br>데이터가 쌓인 상태에서 분석과 자동화를 붙입니다.</div>
+    <table class="perm-table">
+      <thead><tr><th style="text-align:left">항목</th><th style="text-align:left">상세 내용</th><th>예상 기간</th></tr></thead>
+      <tbody>
+        <tr><td style="font-weight:600">재고 관리</td><td style="text-align:left;font-size:12px;color:var(--sub)">제품 등록(SKU/카테고리/매입가/판매가), 재고 현황 대시보드, 입출고 이력 CRUD, 안전 재고 알림</td><td style="font-size:12px">2주</td></tr>
+        <tr><td style="font-weight:600">ERP 기능</td><td style="text-align:left;font-size:12px;color:var(--sub)">발주 요청/승인/입고 워크플로우, 구매처 관리, 프로젝트별 비용 정산, 매출/지출 추적</td><td style="font-size:12px">1.5주</td></tr>
+        <tr><td style="font-weight:600">통계 · 리포트</td><td style="text-align:left;font-size:12px;color:var(--sub)">매출 통계(세팅비/판매비/총매출), 상담 전환 퍼널, 파이프라인 현황, 평균 소요 기간, 엑셀 다운로드</td><td style="font-size:12px">1.5주</td></tr>
+        <tr><td style="font-weight:600">홈페이지 견적 API</td><td style="text-align:left;font-size:12px;color:var(--sub)">카페24 Gnuboard5 측 estimate_api.php 구축, CRM에서 견적 불러오기 UI 및 자동 입력</td><td style="font-size:12px">1주</td></tr>
+        <tr><td style="font-weight:600">의뢰자 공개 캘린더</td><td style="text-align:left;font-size:12px;color:var(--sub)">시간+지역만 표시하는 외부 공유 캘린더, 모바일/데스크탑 UI, 실시간 동기화, URL 공유</td><td style="font-size:12px">1주</td></tr>
+      </tbody>
+    </table>
+    <div style="background:var(--purple-bg);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--purple-dark);margin-top:12px"><strong>Phase 3 완료 시점의 상태:</strong> 재고/발주/비용까지 통합 관리. 경영진이 통계 대시보드로 매출·전환율·파이프라인을 실시간 파악. 홈페이지 견적도 CRM으로 흡수.</div>
+  </div>
+
+  <div class="acc-header" id="acc-phase4" onclick="toggleAcc('acc-phase4')"><span>⚪ Phase 4 — 고도화 · 자동화 (이후 지속)</span><span class="arrow">▼</span></div>
+  <div class="acc-body" id="acc-phase4-body">
+    <div style="font-size:13px;color:var(--sub);line-height:1.8;margin-bottom:14px"><strong style="color:var(--text)">목표: AI 자동화, 고급 연동, UX 고도화로 업무 효율 극대화.</strong><br>Phase 1~3의 운영 피드백을 반영하여 지속적으로 개선합니다.</div>
+    <table class="perm-table">
+      <thead><tr><th style="text-align:left">항목</th><th style="text-align:left">상세 내용</th><th>우선순위</th></tr></thead>
+      <tbody>
+        <tr><td style="font-weight:600">AI 상담 요약</td><td style="text-align:left;font-size:12px;color:var(--sub)">상담 내용 자동 분석·요약 → 이력 폼 자동 기입. 수기 입력 부담 경감, 기록 품질 일관성 확보</td><td style="font-size:12px"><span style="background:var(--amber-bg);color:var(--amber-dark);font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600">높음</span></td></tr>
+        <tr><td style="font-weight:600">채널톡 심화 연동</td><td style="text-align:left;font-size:12px;color:var(--sub)">외부 문의 → CRM 상담 이력 자동 생성, 채널톡 대화 내역 CRM 타임라인에 통합</td><td style="font-size:12px"><span style="background:var(--amber-bg);color:var(--amber-dark);font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600">높음</span></td></tr>
+        <tr><td style="font-weight:600">방송 장비 공간 맵핑</td><td style="text-align:left;font-size:12px;color:var(--sub)">아이콘 기반 장비 배치도, Drag &amp; Drop, 소프트웨어 계층 설정, 조명 컨트롤러</td><td style="font-size:12px"><span style="background:var(--blue-bg);color:var(--blue-dark);font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600">중간</span></td></tr>
+        <tr><td style="font-weight:600">홈페이지 통합</td><td style="text-align:left;font-size:12px;color:var(--sub)">온라인 견적서 시스템, 고객 포털(견적 확인/승인), 외부 고객 직접 이용 가능</td><td style="font-size:12px"><span style="background:var(--blue-bg);color:var(--blue-dark);font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600">중간</span></td></tr>
+        <tr><td style="font-weight:600">고급 알림 자동화</td><td style="text-align:left;font-size:12px;color:var(--sub)">SMS 연동, 조건부 알림 규칙, AS 만료 사전 알림, 재고 자동 발주 트리거</td><td style="font-size:12px"><span style="background:var(--green-bg);color:var(--green-dark);font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600">낮음</span></td></tr>
+      </tbody>
+    </table>
+    <div style="background:var(--gray-bg);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--sub);margin-top:12px"><strong>Phase 4는 종료 시점이 없습니다.</strong> Phase 1~3 운영 중에 수집된 사용자 피드백, 업무 변화, 기술 트렌드에 따라 지속적으로 기능을 추가하고 개선합니다.</div>
+  </div>
+
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 24px;margin:20px 0">
+    <h3 style="font-size:15px;font-weight:600;margin-bottom:14px">📋 전체 타임라인 요약</h3>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:100px;flex-shrink:0;font-size:12px;font-weight:600;color:var(--teal-dark)">Phase 1</div>
+        <div style="flex:1;height:28px;background:linear-gradient(90deg,var(--teal) 0%,var(--teal) 100%);border-radius:6px;display:flex;align-items:center;padding:0 10px;font-size:10px;color:#fff;font-weight:600">MVP 핵심 기반 — 6~8주</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:100px;flex-shrink:0;font-size:12px;font-weight:600;color:var(--blue-dark)">Phase 2</div>
+        <div style="flex:1;height:28px;background:linear-gradient(90deg,var(--blue) 0%,var(--blue) 100%);border-radius:6px;display:flex;align-items:center;padding:0 10px;font-size:10px;color:#fff;font-weight:600">현장 운영 기능 — 6~8주</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:100px;flex-shrink:0;font-size:12px;font-weight:600;color:var(--purple-dark)">Phase 3</div>
+        <div style="flex:1;height:28px;background:linear-gradient(90deg,var(--purple) 0%,var(--purple) 100%);border-radius:6px;display:flex;align-items:center;padding:0 10px;font-size:10px;color:#fff;font-weight:600">경영 관리 · 연동 — 5~7주</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:100px;flex-shrink:0;font-size:12px;font-weight:600;color:var(--hint)">Phase 4</div>
+        <div style="flex:1;height:28px;background:linear-gradient(90deg,var(--gray-bg) 0%,var(--border) 100%);border-radius:6px;display:flex;align-items:center;padding:0 10px;font-size:10px;color:var(--sub);font-weight:600">고도화 · 자동화 — 지속</div>
+      </div>
+    </div>
+    <div style="font-size:12px;color:var(--sub);margin-top:12px;line-height:1.8">
+      <strong style="color:var(--text)">전체 예상 기간:</strong> Phase 1~3 완료까지 약 17~23주 (4~6개월)<br>
+      <strong style="color:var(--text)">핵심 원칙:</strong> Phase 1 완료 즉시 실사용 시작 → 피드백 수렴하면서 Phase 2 개발 병행<br>
+      <strong style="color:var(--text)">인력 기준:</strong> 개발자 1명 기준 예상. 추가 인력 시 기간 단축 가능
+    </div>
+  </div>
+
   <div class="section-title">추후 추가 예정 기능</div>
   <div class="section-desc">아래 기능들은 순차적으로 개발·적용될 예정입니다.</div>
   <div class="future-grid">
