@@ -108,7 +108,8 @@ body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);
     <div class="toc-grid">
       <div class="toc-item" onclick="document.getElementById('s1').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--blue)">01</div>로그인</div>
       <div class="toc-item" onclick="document.getElementById('s2').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--purple)">02</div>대시보드</div>
-      <div class="toc-item" onclick="document.getElementById('s3').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--teal)">03</div>캘린더 (사내)</div>
+      <div class="toc-item" onclick="document.getElementById('s3').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--teal)">03</div>캘린더 (사내 Desktop)</div>
+      <div class="toc-item" onclick="document.getElementById('s3m').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--teal)">03-M</div>캘린더 (기술자 모바일)</div>
       <div class="toc-item" onclick="document.getElementById('s4').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--teal)">04</div>캘린더 (의뢰자용)</div>
       <div class="toc-item" onclick="document.getElementById('s5').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--coral)">05</div>의뢰인 등록/수정</div>
       <div class="toc-item" onclick="document.getElementById('s6').scrollIntoView({behavior:'smooth'})"><div class="num" style="background:var(--coral)">06</div>의뢰인 이력 조회</div>
@@ -262,6 +263,156 @@ body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- 03-2. 캘린더 모바일 -->
+  <div class="section" id="s3m">
+    <div class="section-head"><div class="snum" style="background:var(--teal)">03-M</div><h2>캘린더 (기술자 모바일)</h2></div>
+    <div class="section-desc">출장 기술자가 현장에서 PWA로 확인하는 모바일 캘린더. 오늘의 일정과 상세 정보를 빠르게 파악.</div>
+    <div class="wire">
+      <div class="wire-title">기술자 모바일 캘린더 — 일간 뷰 <span class="device">Mobile PWA</span></div>
+      <div class="wire-body" style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap">
+
+        <!-- 화면 1: 일정 목록 -->
+        <div class="mobile-frame" style="width:320px">
+          <div class="m-statusbar"><span>09:15</span><span>📶 🔋</span></div>
+          <div style="background:var(--teal);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:13px;font-weight:600">📅 내 일정</span>
+            <span style="font-size:11px;opacity:.8">이*종 (관리자)</span>
+          </div>
+          <div style="background:#fff;padding:0">
+            <!-- 날짜 네비 -->
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid #eee">
+              <span style="font-size:12px;color:var(--hint)">◀</span>
+              <div style="text-align:center">
+                <div style="font-size:15px;font-weight:700">3월 17일 화요일</div>
+                <div style="font-size:10px;color:var(--hint)">오늘 일정 3건</div>
+              </div>
+              <span style="font-size:12px;color:var(--hint)">▶</span>
+            </div>
+            <!-- 뷰 전환 -->
+            <div style="display:flex;gap:0;padding:8px 16px">
+              <div style="flex:1;text-align:center;padding:6px;font-size:11px;background:var(--gray-bg);border-radius:6px 0 0 6px;color:var(--sub)">월간</div>
+              <div style="flex:1;text-align:center;padding:6px;font-size:11px;background:var(--gray-bg);color:var(--sub)">주간</div>
+              <div style="flex:1;text-align:center;padding:6px;font-size:11px;background:var(--teal);color:#fff;border-radius:0 6px 6px 0;font-weight:600">일간</div>
+            </div>
+            <!-- 일정 카드들 -->
+            <div style="padding:12px 16px">
+              <div style="border-left:3px solid var(--blue);background:var(--blue-bg);border-radius:0 8px 8px 0;padding:10px 12px;margin-bottom:10px">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <span style="font-size:12px;font-weight:600;color:var(--blue-dk)">🏠 방문 세팅</span>
+                  <span class="m-badge" style="background:var(--blue);color:#fff">10:00</span>
+                </div>
+                <div style="font-size:11px;color:var(--sub);margin-top:4px">김*수 님 (누구세촌)</div>
+                <div style="font-size:10px;color:var(--hint);margin-top:2px">📍 서울 마포구 상암동 123-4</div>
+                <div style="display:flex;gap:4px;margin-top:6px">
+                  <span class="m-badge" style="background:#fff;color:var(--blue-dk);border:1px solid var(--blue)">PC 세팅</span>
+                  <span class="m-badge" style="background:#fff;color:var(--blue-dk);border:1px solid var(--blue)">조명 설치</span>
+                </div>
+              </div>
+              <div style="border-left:3px solid var(--coral);background:var(--coral-bg);border-radius:0 8px 8px 0;padding:10px 12px;margin-bottom:10px">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <span style="font-size:12px;font-weight:600;color:var(--coral-dk)">🔧 AS 방문</span>
+                  <span class="m-badge" style="background:var(--coral);color:#fff">14:00</span>
+                </div>
+                <div style="font-size:11px;color:var(--sub);margin-top:4px">이*영 님</div>
+                <div style="font-size:10px;color:var(--hint);margin-top:2px">📍 서울 강남구 역삼동 456-7</div>
+                <div style="display:flex;gap:4px;margin-top:6px">
+                  <span class="m-badge" style="background:#fff;color:var(--coral-dk);border:1px solid var(--coral)">모니터 교체</span>
+                </div>
+              </div>
+              <div style="border-left:3px solid var(--teal);background:var(--teal-bg);border-radius:0 8px 8px 0;padding:10px 12px;margin-bottom:10px">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <span style="font-size:12px;font-weight:600;color:var(--teal-dk)">🖥️ 원격 세팅</span>
+                  <span class="m-badge" style="background:var(--teal);color:#fff">17:00</span>
+                </div>
+                <div style="font-size:11px;color:var(--sub);margin-top:4px">박*진 님</div>
+                <div style="font-size:10px;color:var(--hint);margin-top:2px">💻 원격 접속</div>
+                <div style="display:flex;gap:4px;margin-top:6px">
+                  <span class="m-badge" style="background:#fff;color:var(--teal-dk);border:1px solid var(--teal)">OBS 설정</span>
+                  <span class="m-badge" style="background:var(--amber-bg);color:var(--amber-dk);border:1px solid var(--amber)">유료</span>
+                </div>
+              </div>
+            </div>
+            <!-- 하단 탭바 -->
+            <div style="display:flex;border-top:1px solid #eee;background:#fff">
+              <div style="flex:1;text-align:center;padding:10px 0;font-size:10px;color:var(--teal);font-weight:600;border-top:2px solid var(--teal)">📅 일정</div>
+              <div style="flex:1;text-align:center;padding:10px 0;font-size:10px;color:var(--hint)">📋 세팅</div>
+              <div style="flex:1;text-align:center;padding:10px 0;font-size:10px;color:var(--hint)">🔔 알림</div>
+              <div style="flex:1;text-align:center;padding:10px 0;font-size:10px;color:var(--hint)">👤 내정보</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 화면 2: 일정 상세 -->
+        <div class="mobile-frame" style="width:320px">
+          <div class="m-statusbar"><span>09:16</span><span>📶 🔋</span></div>
+          <div style="background:var(--blue);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:13px;font-weight:600">◀ 일정 상세</span>
+            <span style="font-size:11px;opacity:.8">편집</span>
+          </div>
+          <div style="background:#fff;padding:16px">
+            <!-- 상태 배지 -->
+            <div style="display:flex;gap:6px;margin-bottom:12px">
+              <span class="m-badge" style="background:var(--blue);color:#fff;font-size:11px;padding:4px 10px">🏠 방문 세팅</span>
+              <span class="m-badge" style="background:var(--amber-bg);color:var(--amber-dk);font-size:11px;padding:4px 10px">예정</span>
+            </div>
+            <!-- 고객 정보 -->
+            <div style="background:var(--gray-bg);border-radius:10px;padding:12px;margin-bottom:12px">
+              <div style="font-size:14px;font-weight:600;margin-bottom:4px">김*수 님 (누구세촌)</div>
+              <div style="font-size:11px;color:var(--sub)">📱 010-****-5678</div>
+              <div style="font-size:11px;color:var(--sub)">📍 서울 마포구 상암동 123-4, 302호</div>
+              <div style="margin-top:6px">
+                <div class="m-btn m-btn-primary" style="font-size:10px;padding:4px 10px">📞 전화걸기</div>
+                <div class="m-btn m-btn-outline" style="font-size:10px;padding:4px 10px">🗺️ 길찾기</div>
+              </div>
+            </div>
+            <!-- 시간 정보 -->
+            <div style="margin-bottom:12px">
+              <div style="font-size:11px;color:var(--hint);margin-bottom:4px">일시</div>
+              <div style="font-size:13px;font-weight:600">2026년 3월 17일 (화) 10:00 ~ 13:00</div>
+              <div style="font-size:11px;color:var(--sub);margin-top:2px">예상 소요: 3시간</div>
+            </div>
+            <!-- 작업 내용 -->
+            <div style="margin-bottom:12px">
+              <div style="font-size:11px;color:var(--hint);margin-bottom:6px">세팅 항목</div>
+              <div class="m-check"><div class="box"></div>PC 본체 설치 및 세팅</div>
+              <div class="m-check"><div class="box"></div>모니터 2대 설치</div>
+              <div class="m-check"><div class="box"></div>조명 4대 설치 (정면 2 / 반사 2)</div>
+              <div class="m-check"><div class="box"></div>마이크 설치 (AT2020)</div>
+              <div class="m-check"><div class="box"></div>OBS + 프릭샷 설정</div>
+              <div class="m-check"><div class="box"></div>최종 테스트 방송</div>
+            </div>
+            <!-- 결제 정보 -->
+            <div style="background:var(--green-bg);border-radius:8px;padding:10px 12px;margin-bottom:12px">
+              <div style="font-size:11px;font-weight:600;color:var(--green-dk)">💳 결제 상태</div>
+              <div style="font-size:12px;color:var(--green-dk);margin-top:2px">페이앱 결제 완료 — ₩3,250,000</div>
+            </div>
+            <!-- 메모 -->
+            <div style="margin-bottom:12px">
+              <div style="font-size:11px;color:var(--hint);margin-bottom:4px">메모</div>
+              <div style="font-size:11px;color:var(--sub);background:var(--gray-bg);padding:8px 10px;border-radius:6px">고양이 있음 주의. 현관문 비밀번호 전달받음.</div>
+            </div>
+            <!-- 액션 버튼 -->
+            <div style="display:flex;gap:8px;margin-top:16px">
+              <div class="m-btn m-btn-primary" style="flex:1;text-align:center;padding:10px">🔧 세팅 시작</div>
+            </div>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <div class="m-btn m-btn-outline" style="flex:1;text-align:center;padding:8px;font-size:11px">일정 변경 요청</div>
+              <div class="m-btn m-btn-danger" style="flex:1;text-align:center;padding:8px;font-size:11px">방문 취소</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <ul class="spec-list">
+      <li><strong>일간 뷰 기본:</strong> 기술자는 주로 오늘의 일정만 확인하므로 일간 뷰가 기본. 월간/주간으로 전환 가능</li>
+      <li><strong>전화걸기 / 길찾기:</strong> 고객 연락처 탭 시 바로 전화 연결, 주소 탭 시 지도 앱으로 이동</li>
+      <li><strong>세팅 시작 버튼:</strong> 탭 시 방문 세팅 프로세스(08번 화면)로 진입</li>
+      <li><strong>하단 탭바:</strong> 일정 / 세팅(진행중) / 알림 / 내정보 4개 탭으로 빠른 이동</li>
+      <li><strong>프리랜서 권한:</strong> 캘린더 열람 + 방문 보고서 작성만 가능. 고객 연락처는 마스킹(010-****-5678) 처리</li>
+    </ul>
   </div>
 
   <!-- 04. 의뢰자용 캘린더 -->
@@ -801,7 +952,7 @@ body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);
 
   <div class="footer">
     닥터고블린컴퍼니 · CRM 화면 설계서 v1.0<br>
-    총 14개 화면 · 문의사항은 개발팀에 연락해주세요
+    총 15개 화면 · 문의사항은 개발팀에 연락해주세요
   </div>
 </div>
 
